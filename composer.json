@@ -1,0 +1,22 @@
+{
+	"name": "artem/job-post",
+	"autoload": {
+		"psr-4": {
+			"App\\": "src/",
+			"Core\\": "src/"
+		}
+	},
+	"authors": [
+		{
+			"name": "tictac",
+			"email": "test@test.com"
+		}
+	],
+	"require": {
+		"league/route": "^5.1",
+		"laminas/laminas-diactoros": "^2.23",
+		"laminas/laminas-httphandlerrunner": "^2.4",
+		"league/container": "^4.2",
+		"twig/twig": "^3.4"
+	}
+}
