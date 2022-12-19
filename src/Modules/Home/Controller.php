@@ -3,10 +3,7 @@
 
 namespace App\Modules\Home;
 
-
-use Laminas\Diactoros\Response;
 use Laminas\Diactoros\Response\HtmlResponse;
-use Psr\Http\Message\ServerRequestInterface;
 use Core\System\Twig;
 use Psr\Http\Message\ResponseInterface;
 
@@ -17,7 +14,7 @@ class Controller {
 	}
 
 	function hello():ResponseInterface {
-		$result = $this->twig->render('View.twig', ['name' => 'Fabien']);
+		$result = $this->twig->render('home.twig', ['title' => 'Home']);
         return new HtmlResponse($result);
     }
 }
