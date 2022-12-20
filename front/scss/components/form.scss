@@ -31,6 +31,21 @@
 		color: #62d0df;
 		text-decoration: underline;
 	}
+
+	&__error {
+		display: none;
+		&--show ~ .form__error {
+			display: block;
+			color: red;
+			text-align: start;
+		}
+		&--show ~ .input__label {
+			color: red;
+		}
+		&--show {
+			border-color: red !important;
+		}
+	}
 }
 
 .input {
@@ -40,6 +55,7 @@
 	margin-top: 10px;
 	&__label {
 		align-self: flex-start;
+		order: -1;
 	}
 	&__input {
 		margin-top: 10px;

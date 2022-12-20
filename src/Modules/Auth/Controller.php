@@ -25,4 +25,17 @@ class Controller {
 		$result = $this->twig->render('login.twig', ['title' => 'Signin']);
         return new HtmlResponse($result);
     }
+
+	function userRegister(ServerRequestInterface $request):ResponseInterface {
+		$response = new Response;
+		$response->getBody()->write(json_encode($request->getParsedBody()));
+		return $response;
+    }
+	function userSignin(ServerRequestInterface $request):ResponseInterface {
+		$response = new Response;
+		$response->getBody()->write(json_encode($request->getParsedBody()));
+
+		return $response;
+    }
+	
 }

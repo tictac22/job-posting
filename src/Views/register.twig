@@ -6,8 +6,11 @@
 {% extends "components/base.twig" %}
 
 {% block scripts %}
-<script type="module" crossorigin src={{BASE_URI ~ '/assets/modulepreload-polyfill-ec808ebb.js'}}></script>
-<link rel="stylesheet" href= {{BASE_URI ~ '/assets/register-55e0eb20.css'}}>
+<script type="module" crossorigin src={{ BASE_URI ~"/assets/register-b97a1a28.js"}}></script>
+<link rel="modulepreload" crossorigin href={{ BASE_URI ~ "/assets/modulepreload-polyfill-ec808ebb.js"}}>
+<link rel="modulepreload" crossorigin href={{ BASE_URI ~"/assets/form-1b39d3c2.js"}}>
+<link rel="stylesheet" href={{ BASE_URI ~"/assets/login-356872da.css"}}>
+
 {% endblock %}
 
 {% block content %}
@@ -18,26 +21,31 @@
 					<div class="form__descr">
 						<h1 class="form__title">Register</h1>
 						<p class="form__text">Register an account to post jobs</p>
+						<p class="form__error">Error</p>
 					</div>
 					<div class="form__input input">
-						<label class="input__label" for="name">Name</label>
 						<input type="text" name="name" id="name" class="input__input" />
+						<label class="input__label" for="name">Name</label>
+						<p class="form__error">Error</p>
 					</div>
 					<div class="form__input input">
-						<label class="input__label" for="email">Email</label>
 						<input type="text" name="email" id="email" class="input__input" />
+						<label class="input__label" for="email">Email</label>
+						<p class="form__error">Error</p>
 					</div>
 					<div class="form__input input">
-						<label class="input__label" for="password">Password</label>
 						<input type="password" name="password" id="password" class="input__input" />
+						<label class="input__label" for="password">Password</label>
+						<p class="form__error">Error</p>
 					</div>
 					<div class="form__input input">
-						<label class="input__label" for="confirm">Confirm password</label>
 						<input type="password" name="confirm" id="confirm" class="input__input" />
+						<label class="input__label" for="confirm">Confirm password</label>
+						<p class="form__error">Error</p>
 					</div>
 					<button class="form__button button" type="submit">Sign Up</button>
 					<p class="form__text-down">
-						Already have an account? <a class="form__redirect" href={{BASE_URI ~ '/signin'}}>Login</a>
+						Already have an account? <a class="form__register" href="#">Login</a>
 					</p>
 				</div>
 			</div>

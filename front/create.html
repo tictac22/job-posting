@@ -38,15 +38,16 @@
 								<p class="form__text">Create a post to find a developer</p>
 							</div>
 							<div class="form__input input">
-								<label class="input__label" for="name">Company Name</label>
 								<input type="text" name="name" id="name" class="input__input" />
+								<label class="input__label" for="name">Company Name</label>
+								<p class="form__error">Error</p>
 							</div>
 							<div class="form__input input">
-								<label class="input__label" for="title">Job title</label>
 								<input type="text" name="title" id="title" class="input__input" />
+								<label class="input__label" for="title">Job title</label>
+								<p class="form__error">Error</p>
 							</div>
 							<div class="form__input input">
-								<label class="input__label" for="location">Job location</label>
 								<input
 									type="text"
 									name="location"
@@ -54,22 +55,28 @@
 									id="location"
 									class="input__input"
 								/>
+								<label class="input__label" for="location">Job location</label>
+								<p class="form__error">Error</p>
 							</div>
 							<div class="form__input input">
-								<label class="input__label" for="location">Tags(Comma Separated)</label>
-								<input type="text" name="location" id="location" class="input__input" />
+								<input type="text" name="tags" id="tags" class="input__input" />
+								<label class="input__label" for="tags">Tags(Comma Separated)</label>
+								<p class="form__error">Error</p>
 							</div>
 							<div class="form__input input">
-								<label class="input__label" for="location">Company Logo</label>
-								<input type="file" name="location" id="location" class="input__input" />
+								<input type="file" name="image" id="image" class="input__input" />
+								<label class="input__label" for="image">Company Logo</label>
+								<p class="form__error">Error</p>
 							</div>
 							<div class="form__input input">
-								<label class="input__label" for="description">Job description</label>
 								<textarea
 									maxlength="255"
 									class="input__input input__descrp"
 									id="description"
+									name="decsr"
 								></textarea>
+								<label class="input__label" for="description">Job description</label>
+								<p class="form__error">Error</p>
 								<p class="form__input--hint">255 characters left</p>
 							</div>
 							<button class="form__button button" type="submit">Sign In</button>

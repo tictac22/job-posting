@@ -13,13 +13,20 @@ $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
 );
 
 $router = new League\Route\Router;
+header("Access-Control-Allow-Origin: *");
 
 $router->map('GET', '/','App\Modules\Home\Controller::home');
-$router->map('GET', '/register','App\Modules\Auth\Controller::register');
-$router->map('GET', '/signin','App\Modules\Auth\Controller::signin');
+
 $router->map('GET', '/create','App\Modules\Posts\Controller::create');
 $router->map('GET', '/manage','App\Modules\Posts\Controller::manage');
 $router->map('GET', '/job/{id:number}','App\Modules\Posts\Controller::getOne');
+$router->map('POST', '/create','App\Modules\Posts\Controller::createPost');
+
+$router->map('GET', '/register','App\Modules\Auth\Controller::register');
+$router->map('GET', '/signin','App\Modules\Auth\Controller::signin');
+
+$router->map('POST', '/register','App\Modules\Auth\Controller::userRegister');
+$router->map('POST', '/signin','App\Modules\Auth\Controller::userSignin');
 
 $response = $router->dispatch($request);
 
