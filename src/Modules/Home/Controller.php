@@ -10,11 +10,11 @@ use Psr\Http\Message\ResponseInterface;
 class Controller {
 	public $twig;
 	function __construct() {
-		$this->twig = new Twig('Home');
+		$this->twig = new Twig();
 	}
 
-	function hello():ResponseInterface {
-		$result = $this->twig->render('home.twig', ['title' => 'Home']);
+	function home():ResponseInterface {
+		$result = $this->twig->render('index.twig', ['title' => 'Thrivetalk']);
         return new HtmlResponse($result);
     }
 }

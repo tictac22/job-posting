@@ -1,0 +1,61 @@
+
+
+{% extends "components/base.twig" %}
+
+{% block scripts %}
+	<script type="module" crossorigin href={{BASE_URI ~ '/assets/modulepreload-polyfill-ec808ebb.js'}}></script>
+	<link rel="stylesheet" href={{BASE_URI ~ '/assets/manage-a6ab2c21.css'}} />
+{% endblock %}
+
+{% block content %}
+	<main class="">
+				<div class="manage">
+					<div class="container">
+						<div class="manage__inner">
+							<h1>Manage jobs</h1>
+						</div>
+						<div class="manage__list">
+							<div class="manage__list--item list--item">
+								<p>Senior Developer | Laravel & Vue</p>
+								<div class="list--item__action list--item__action--edit">
+									<a href="#">
+										<p>Edit</p>
+									</a>
+									<i class="fa-solid fa-pen-to-square"></i>
+								</div>
+								<div class="list--item__action list--item__action--delete">
+									<p>Delete</p>
+									<i class="fa-sharp fa-solid fa-trash"></i>
+								</div>
+							</div>
+							<div class="manage__list--item list--item">
+								<p>Senior Developer | Laravel & Vue</p>
+								<div class="list--item__action list--item__action--edit">
+									<a href="#">
+										<p>Edit</p>
+									</a>
+									<i class="fa-solid fa-pen-to-square"></i>
+								</div>
+								<div class="list--item__action list--item__action--delete">
+									<p>Delete</p>
+									<i class="fa-sharp fa-solid fa-trash"></i>
+								</div>
+							</div>
+							<div class="manage__list--item list--item">
+								<p>Senior Developer | Laravel & Vue</p>
+								<div class="list--item__action list--item__action--edit">
+									<a href="#">
+										<p>Edit</p>
+									</a>
+									<i class="fa-solid fa-pen-to-square"></i>
+								</div>
+								<div class="list--item__action list--item__action--delete">
+									<p>Delete</p>
+									<i class="fa-sharp fa-solid fa-trash"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+{% endblock %}

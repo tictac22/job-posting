@@ -12,15 +12,17 @@ use Laminas\Diactoros\Response;
 
 class Controller {
 
-
-	function signUp(ServerRequestInterface  $request): ResponseInterface {
-	
-		print_r($_FILES);
-		$response = new Response;
-
-		$arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
-
-			$response->getBody()->write(json_encode($_POST));
-			return $response;
+	public $twig;
+	function __construct() {
+		$this->twig = new Twig();
 	}
+
+	function register():ResponseInterface {
+		$result = $this->twig->render('register.twig', ['title' => 'Register']);
+        return new HtmlResponse($result);
+    }
+	function signin():ResponseInterface {
+		$result = $this->twig->render('login.twig', ['title' => 'Signin']);
+        return new HtmlResponse($result);
+    }
 }

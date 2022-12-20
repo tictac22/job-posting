@@ -110,7 +110,7 @@ address {
 	color: white;
 	letter-spacing: 0.1em;
 	font-weight: lighter;
-	transition: all 0.3s linear;
+	transition: background-color 0.3s linear;
 	cursor: pointer;
 	&:hover {
 		background-color: #dd9d30;

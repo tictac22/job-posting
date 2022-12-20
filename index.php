@@ -8,15 +8,19 @@ $uri = '/job-post';
 $_SERVER['REQUEST_URI'] = substr($_SERVER['REQUEST_URI'], (strlen($uri)));
 
 
-
 $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
     $_SERVER, $_GET, $_POST, $_COOKIE, $_FILES
 );
 
 $router = new League\Route\Router;
 
-$router->map('GET', '/','App\Modules\Home\Controller::hello');
-$router->map('POST', '/signup','App\Modules\Auth\Controller::signUp');
+$router->map('GET', '/','App\Modules\Home\Controller::home');
+$router->map('GET', '/register','App\Modules\Auth\Controller::register');
+$router->map('GET', '/signin','App\Modules\Auth\Controller::signin');
+$router->map('GET', '/create','App\Modules\Posts\Controller::create');
+$router->map('GET', '/manage','App\Modules\Posts\Controller::manage');
+$router->map('GET', '/job/{id:number}','App\Modules\Posts\Controller::getOne');
+
 $response = $router->dispatch($request);
 
 // send the response to the browser

@@ -1,0 +1,124 @@
+
+
+{% extends "components/base.twig" %}
+
+{% block scripts %}
+	<script type="module" crossorigin src={{ BASE_URI ~ "/assets/modulepreload-polyfill-ec808ebb.js"}}></script>
+	<link rel="stylesheet" href={{ BASE_URI ~ '/assets/index-a8a2efcd.css'}} />
+	<style>
+	
+	</style>
+{% endblock %}
+
+{% block content %}
+	<main>
+		<div class="banner">
+			<div class="container">
+				<div class="banner__inner">
+					<h1 class="banner__title">Thrivetalk</h1>
+					<p class="banner__text">Find or post Web developer jobs</p>
+					<a href={{BASE_URI ~ '/register'}} class="banner__button button">SIGN UP TO LIST A JOB</a>
+				</div>
+			</div>
+		</div>
+		<div class="jobs">
+			<div class="container">
+				<form class="jobs__form form" method="post">
+					<input class="form__input" type="text" name="search" placeholder="Search Thrivetalk jobs" />
+					<button class="form__button button" type="submit">Search</button>
+				</form>
+				<div class="jobs__inner">
+					<div class="job">
+						<div class="job__img">
+							<img src={{BASE_URI ~ "/assets/images/wayne.png"}} />
+						</div>
+						<div class="job__descr">
+							<h3 class="job__title">Senior Developer | Laravel & Vue</h3>
+							<h4 class="job__company">Wonka Industries</h4>
+							<ul class="job__tags">
+								<li class="job__tag">
+									<a href="/"> Laravel </a>
+								</li>
+								<li class="job__tag">
+									<a href="/"> Api </a>
+								</li>
+								<li class="job__tag">
+									<a href="/"> Vue </a>
+								</li>
+							</ul>
+							<div class="job__location">
+								<i class="fa-sharp fa-solid fa-location-pin"></i>
+								<p>Miami, Fl</p>
+							</div>
+						</div>
+					</div>
+					<div class="job">
+						<div class="job__img">
+							<img src={{BASE_URI ~ "/assets/images/wayne.png"}}  />
+						</div>
+						<div class="job__descr">
+							<h3 class="job__title">
+								Senior Developer | Laravel & Vue Senior Developer | Laravel & Vue Senior
+								Developer | Laravel & Vue
+							</h3>
+							<h4 class="job__company">Wonka Industries</h4>
+							<ul class="job__tags">
+								<li class="job__tag">
+									<a href="/"> Laravel </a>
+								</li>
+								<li class="job__tag">
+									<a href="/"> Api </a>
+								</li>
+								<li class="job__tag">
+									<a href="/"> Vue </a>
+								</li>
+							</ul>
+							<div class="job__location">
+								<i class="fa-sharp fa-solid fa-location-pin"></i>
+								<p>Miami, Fl</p>
+							</div>
+						</div>
+					</div>
+					<div class="job">
+						<div class="job__img">
+							<img src={{BASE_URI ~ "/assets/images/wayne.png"}} />
+						</div>
+						<div class="job__descr">
+							<h3 class="job__title">Senior Developer | Laravel & Vue</h3>
+							<h4 class="job__company">Wonka Industries</h4>
+							<ul class="job__tags">
+								<li class="job__tag">
+									<a href="/"> Laravel </a>
+								</li>
+								<li class="job__tag">
+									<a href="/"> Api </a>
+								</li>
+								<li class="job__tag">
+									<a href="/"> Vue </a>
+								</li>
+							</ul>
+							<div class="job__location">
+								<i class="fa-sharp fa-solid fa-location-pin"></i>
+								<p>Miami, Fl</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="pagination">
+			<div class="container">
+				<div class="pagination__inner">
+					<div class="pagination__paginator paginator paginator-left">
+						<i class="fa-sharp fa-solid fa-arrow-left"></i>
+					</div>
+					<div class="pagination__paginator paginator">1</div>
+					<div class="pagination__paginator paginator">2</div>
+					<div class="pagination__paginator paginator paginator-right">
+						<i class="fa-sharp fa-solid fa-arrow-right"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>		
+{% endblock %}

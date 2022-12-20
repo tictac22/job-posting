@@ -99,7 +99,7 @@
 		display: inline-block;
 		text-transform: lowercase;
 		border-radius: 7px;
-		transition: all 0.3s linear;
+		transition: background-color 0.3s linear;
 		&:hover {
 			background: rgb(41, 40, 40);
 		}
@@ -125,7 +125,7 @@
 }
 
 .paginator {
-	transition: all 0.3s linear;
+	transition: background-color 0.3s linear;
 	cursor: pointer;
 	&:hover {
 		background-color: rgb(209, 208, 208);
