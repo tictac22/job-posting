@@ -1,0 +1,142 @@
+@import "./scss/style";
+@import "./scss/header";
+@import "./scss/footer";
+
+.banner {
+	height: 500px;
+	background-color: #62d0df;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	&__title {
+		color: white;
+		font-size: 36px;
+		line-height: 27px;
+		letter-spacing: -0.006em;
+	}
+	&__text {
+		margin-top: 5px;
+	}
+	&__button {
+		padding: 10px 30px;
+		margin-top: 10px;
+	}
+}
+
+.form {
+	display: flex;
+	position: relative;
+	margin-top: 10px;
+	&__input {
+		flex: 1 1 100%;
+		border: 1px solid rgb(161, 160, 160);
+		padding: 13px;
+	}
+	&__button {
+		position: absolute;
+		right: 10px;
+		padding: 5px 10px;
+		border-radius: 5px;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+.jobs {
+	&__inner {
+		display: grid;
+		gap: 15px;
+		grid-template-columns: 1fr;
+		@media (min-width: 1428px) {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+}
+
+.job {
+	display: flex;
+	align-items: center;
+	background-color: white;
+	margin-top: 20px;
+	padding: 15px;
+	&__img {
+		width: 192px;
+		display: none;
+		@media (min-width: 700px) {
+			display: block;
+		}
+		& img {
+			width: 100%;
+		}
+	}
+	&__descr {
+		@media (min-width: 700px) {
+			margin-left: 20px;
+			flex: 1 1 66%;
+		}
+		display: flex;
+		flex-direction: column;
+	}
+	&__title {
+		font-weight: 400;
+	}
+	&__company {
+		margin-top: 5px;
+		font-weight: bolder;
+	}
+	&__location {
+		display: flex;
+		align-items: center;
+	}
+	&__tags {
+		margin-top: 5px;
+	}
+	&__tag {
+		color: white;
+		background: black;
+		padding: 7px;
+		display: inline-block;
+		text-transform: lowercase;
+		border-radius: 7px;
+		transition: all 0.3s linear;
+		&:hover {
+			background: rgb(41, 40, 40);
+		}
+	}
+	&__location {
+		margin-top: 5px;
+		& p {
+			margin-left: 3px;
+		}
+	}
+}
+
+.pagination {
+	margin-top: 10px;
+	&__inner {
+		display: flex;
+		justify-content: end;
+	}
+	&__paginator {
+		border: 1px solid gainsboro;
+		padding: 5px 20px;
+	}
+}
+
+.paginator {
+	transition: all 0.3s linear;
+	cursor: pointer;
+	&:hover {
+		background-color: rgb(209, 208, 208);
+	}
+	&-left {
+		border-top-left-radius: 10px;
+		border-bottom-left-radius: 10px;
+	}
+	&-right {
+		border-top-right-radius: 10px;
+		border-bottom-right-radius: 10px;
+	}
+}
+

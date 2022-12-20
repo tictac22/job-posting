@@ -1,0 +1,135 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+@font-face {
+	font-family: "ChivoMono";
+	src: url("fonts/ChivoMono-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "ChivoMono";
+	src: url("fonts/ChivoMono-Bold.ttf") format("truetype");
+	font-weight: bold;
+	font-style: normal;
+}
+@font-face {
+	font-family: "ChivoMono";
+	src: url("fonts/ChivoMono-Light.ttf") format("truetype");
+	font-weight: 300;
+	font-style: normal;
+}
+html,
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
+	font-size: 18px;
+	background-color: #f4f9e2;
+	font-family: "ChivoMono";
+}
+body._lock {
+	overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+li {
+	list-style: none;
+}
+input {
+	border: none;
+	outline: none;
+}
+input::-webkit-input-placeholder {
+	opacity: 1;
+	transition: opacity 0.3s ease;
+}
+input::-moz-placeholder {
+	opacity: 1;
+	transition: opacity 0.3s ease;
+}
+input:-moz-placeholder {
+	opacity: 1;
+	transition: opacity 0.3s ease;
+}
+input:-ms-input-placeholder {
+	opacity: 1;
+	transition: opacity 0.3s ease;
+}
+input:focus::-webkit-input-placeholder {
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+input:focus::-moz-placeholder {
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+input:focus:-moz-placeholder {
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+input:focus:-ms-input-placeholder {
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+textarea:focus::-webkit-input-placeholder {
+	opacity: 0;
+}
+button {
+	border: none;
+	outline: none;
+}
+textarea {
+	outline: none;
+	border: none;
+}
+address {
+	font-style: normal;
+}
+.wrapper {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+.container {
+	max-width: 1430px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+.button {
+	display: block;
+	background-color: #f9b640;
+	color: white;
+	letter-spacing: 0.1em;
+	font-weight: lighter;
+	transition: all 0.3s linear;
+	cursor: pointer;
+	&:hover {
+		background-color: #dd9d30;
+	}
+}
+main {
+	flex: 1 1 100%;
+	margin: 10px 0px;
+}
