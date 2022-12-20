@@ -1,0 +1,106 @@
+@import "./components/base";
+
+.job {
+	display: flex;
+	align-items: center;
+	background-color: white;
+	margin-top: 20px;
+	padding: 15px;
+	text-align: center;
+	&__img {
+		margin: auto;
+		width: 192px;
+		display: none;
+		@media (min-width: 700px) {
+			display: block;
+		}
+		& img {
+			width: 100%;
+		}
+	}
+	&__descr {
+		@media (min-width: 700px) {
+			margin-left: 20px;
+			flex: 1 1 66%;
+		}
+		display: flex;
+		flex-direction: column;
+	}
+	&__title {
+		font-weight: 400;
+		margin-top: 10px;
+	}
+	&__company {
+		margin-top: 10px;
+
+		font-weight: bolder;
+	}
+	&__location {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	&__tags {
+		margin-top: 15px;
+	}
+	&__tag {
+		color: white;
+		background: black;
+		padding: 4px;
+		font-size: 14px;
+		display: inline-block;
+		text-transform: lowercase;
+		border-radius: 7px;
+		transition: all 0.3s linear;
+		&:hover {
+			background: rgb(41, 40, 40);
+		}
+	}
+	&__location {
+		margin-top: 15px;
+
+		& p {
+			margin-left: 3px;
+		}
+	}
+}
+
+.about {
+	background-color: white;
+	margin-top: 10px;
+	padding: 15px;
+	&__title {
+		text-align: center;
+	}
+	&__text {
+		margin: 0 auto;
+		margin-top: 15px;
+		text-align: center;
+		line-height: 24px;
+	}
+	&__button {
+		width: 100%;
+		padding: 10px;
+		border-radius: 10px;
+		margin-top: 10px;
+		cursor: pointer;
+		transition: all 0.3s linear;
+		color: white;
+		& i {
+			color: white;
+			margin-right: 10px;
+		}
+		&--apply {
+			background-color: #62d0df;
+			&:hover {
+				background-color: #4abbca;
+			}
+		}
+		&--visit {
+			background-color: black;
+			&:hover {
+				background-color: rgb(49, 47, 47);
+			}
+		}
+	}
+}

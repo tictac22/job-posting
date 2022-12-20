@@ -4,24 +4,6 @@
 	padding: 0;
 }
 
-@font-face {
-	font-family: "ChivoMono";
-	src: url("fonts/ChivoMono-Regular.ttf") format("truetype");
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: "ChivoMono";
-	src: url("fonts/ChivoMono-Bold.ttf") format("truetype");
-	font-weight: bold;
-	font-style: normal;
-}
-@font-face {
-	font-family: "ChivoMono";
-	src: url("fonts/ChivoMono-Light.ttf") format("truetype");
-	font-weight: 300;
-	font-style: normal;
-}
 html,
 body {
 	margin: 0;
@@ -34,6 +16,11 @@ body {
 	background-color: #f4f9e2;
 	font-family: "ChivoMono";
 }
+
+@import "./fonts";
+@import "./footer";
+@import "./header";
+
 body._lock {
 	overflow: hidden;
 }
@@ -132,4 +119,9 @@ address {
 main {
 	flex: 1 1 100%;
 	margin: 10px 0px;
+}
+.main__center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

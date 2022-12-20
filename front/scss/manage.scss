@@ -1,0 +1,27 @@
+@import "./components/base.scss";
+
+.manage__list {
+	margin-top: 20px;
+}
+.list--item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid rgb(99, 97, 97);
+	flex-wrap: wrap;
+	padding: 18px;
+	&__action {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		&--edit {
+			color: rgb(72, 72, 201);
+		}
+		&--delete {
+			color: red;
+		}
+		& i {
+			margin-left: 10px;
+		}
+	}
+}

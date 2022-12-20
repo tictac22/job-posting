@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="header">
+				<div class="container">
+					<div class="header__wrapper">
+						<div class="header__logo">
+							<a href="/">
+								<img src="/logo.png" alt="logo" />
+							</a>
+						</div>
+						<div class="header__auth auth">
+							<a class="auth__link" href="/signup">
+								<i class="fa-solid fa-user-plus"></i>
+								<p>Sign up</p>
+							</a>
+							<a class="auth__link" href="/signup">
+								<i class="fa-solid fa-right-to-bracket"></i>
+								<p>Login</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</header>
+			<main>
+				<form class="form" method="post">
+					<div class="container">
+						<div class="form__inner">
+							<div class="form__descr">
+								<h1 class="form__title">Create</h1>
+								<p class="form__text">Create a post to find a developer</p>
+							</div>
+							<div class="form__input input">
+								<label class="input__label" for="name">Company Name</label>
+								<input type="text" name="name" id="name" class="input__input" />
+							</div>
+							<div class="form__input input">
+								<label class="input__label" for="title">Job title</label>
+								<input type="text" name="title" id="title" class="input__input" />
+							</div>
+							<div class="form__input input">
+								<label class="input__label" for="location">Job location</label>
+								<input
+									type="text"
+									name="location"
+									placeholder="Example: Remote, Latvia Riga"
+									id="location"
+									class="input__input"
+								/>
+							</div>
+							<div class="form__input input">
+								<label class="input__label" for="location">Tags(Comma Separated)</label>
+								<input type="text" name="location" id="location" class="input__input" />
+							</div>
+							<div class="form__input input">
+								<label class="input__label" for="location">Company Logo</label>
+								<input type="file" name="location" id="location" class="input__input" />
+							</div>
+							<div class="form__input input">
+								<label class="input__label" for="description">Job description</label>
+								<textarea
+									maxlength="255"
+									class="input__input input__descrp"
+									id="description"
+								></textarea>
+								<p class="form__input--hint">255 characters left</p>
+							</div>
+							<button class="form__button button" type="submit">Sign In</button>
+							<p class="form__text-down">
+								Don't have an account? <a class="form__regirect" href="#">Register</a>
+							</p>
+						</div>
+					</div>
+				</form>
+			</main>
+			<footer class="footer">
+				<p>Copyright&copy; 2022, All rights reserved</p>
+			</footer>
+		</div>
+		<script src="./js/create.js" type="module"></script>
+	</body>
+</html>

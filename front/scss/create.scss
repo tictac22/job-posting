@@ -1,0 +1,28 @@
+@import "./components/base.scss";
+@import "./components/form.scss";
+
+.input__descrp {
+	border: 1px solid rgb(161, 160, 160);
+	min-width: 300px;
+	resize: horizontal;
+	min-height: 175px;
+	min-width: 400px;
+}
+
+.form__input {
+	position: relative;
+
+	&--hint {
+		position: absolute;
+		right: 22px;
+		font-size: 10px !important;
+		bottom: 10px;
+	}
+}
+
+.disabled {
+	background-color: gray;
+	&:hover {
+		background-color: gray;
+	}
+}
