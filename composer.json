@@ -17,6 +17,7 @@
 		"laminas/laminas-diactoros": "^2.23",
 		"laminas/laminas-httphandlerrunner": "^2.4",
 		"league/container": "^4.2",
-		"twig/twig": "^3.4"
+		"twig/twig": "^3.4",
+		"rakit/validation": "^1.4"
 	}
 }

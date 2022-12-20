@@ -38,7 +38,13 @@ formQuery.addEventListener("submit", async (e) => {
 			body: new FormData(formQuery),
 			method: "POST",
 		})
-		const data = await response.json()
-		console.log(data)
-	} catch (error) {}
+		if (!response.ok) {
+			const errors = await response.json()
+			form.setErrors(errors)
+		} else {
+			const data = await response.json()
+		}
+	} catch (error) {
+		console.log(error)
+	}
 })
