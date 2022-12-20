@@ -10,7 +10,7 @@ export default defineConfig({
 				manage: resolve(__dirname, "manage.html"),
 				login: resolve(__dirname, "login.html"),
 				job: resolve(__dirname, "job.html"),
-				create: resolve(__dirname, "register.html"),
+				create: resolve(__dirname, "create.html"),
 			},
 		},
 	},
