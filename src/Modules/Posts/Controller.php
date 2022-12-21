@@ -27,6 +27,8 @@ class Controller {
         return new HtmlResponse($result);
     }
 	function manage():ResponseInterface {
+		print_r($user);
+		exit();
 		$result = $this->twig->render('manage.twig', ['title' => 'Listings']);
         return new HtmlResponse($result);
     }
