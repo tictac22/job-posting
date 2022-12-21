@@ -17,7 +17,11 @@
 				<div class="banner__inner">
 					<h1 class="banner__title">Thrivetalk</h1>
 					<p class="banner__text">Find or post Web developer jobs</p>
-					<a href={{BASE_URI ~ '/register'}} class="banner__button button">SIGN UP TO LIST A JOB</a>
+					{% if user %}
+						<a href={{BASE_URI ~ '/create'}} class="banner__button button">POST A JOB</a>
+					{% else %}
+						<a href={{BASE_URI ~ '/register'}} class="banner__button button">SIGN UP TO LIST A JOB</a>
+					{% endif %}
 				</div>
 			</div>
 		</div>

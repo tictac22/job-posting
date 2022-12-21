@@ -12,6 +12,8 @@
 			referrerpolicy="no-referrer"
 		/>
 		<title>{{title}}</title>
+		<link rel="stylesheet" href={{ BASE_URI ~ '/assets/base.css'}} />
+		<script type="module" crossorigin src={{BASE_URI ~ '/assets/base.js'}}></script>
 		{% block scripts %}{% endblock %}
 	</head>
 	<body>

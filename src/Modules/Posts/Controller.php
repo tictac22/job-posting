@@ -9,27 +9,29 @@ use Laminas\Diactoros\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Rakit\Validation\Validator;
+use App\Modules\User\Module as UserModule;
 
 class Controller {
 	public $twig;
+	protected $user;
 	function __construct() {
+		$this->user = new UserModule();
 		$this->twig = new Twig();
 	}
 	function getOne():ResponseInterface {
-		$result = $this->twig->render('job.twig', ['title' => 'Create']);
+		$user = $this->user::getUser();
+		$result = $this->twig->render('job.twig', ['title' => 'Create','user' => $user]);
         return new HtmlResponse($result);
     }
 	function create():ResponseInterface {
-		$result = $this->twig->render('create.twig', ['title' => 'Create']);
+		$user = $this->user::getUser();
+		$result = $this->twig->render('create.twig', ['title' => 'Create','user' => $user]);
 
-		
-
-        return new HtmlResponse($result);
+		return new HtmlResponse($result);
     }
 	function manage():ResponseInterface {
-		print_r($user);
-		exit();
-		$result = $this->twig->render('manage.twig', ['title' => 'Listings']);
+		$user = $this->user::getUser();
+		$result = $this->twig->render('manage.twig', ['title' => 'Listings','user' =>$user]);
         return new HtmlResponse($result);
     }
 	function createPost(ServerRequestInterface $request):ResponseInterface {

@@ -2,19 +2,10 @@
 
 declare(strict_types=1);
 
-use Core\System\DB;
-use Core\System\AuthMiddleware;
-
 include_once('init.php');
 require_once 'vendor/autoload.php';
 
-$auth = new AuthMiddleware();
-
-$token =  $_SESSION['token'] ?? $_COOKIE['token'] ?? null;
-$user = null;
-if($token) {
-	$user = $auth->getUserById($token);
-}
+use Core\System\AuthMiddleware;
 
 $uri = '/job-post';
 $_SERVER['REQUEST_URI'] = substr($_SERVER['REQUEST_URI'], (strlen($uri)));
@@ -29,8 +20,8 @@ header("Access-Control-Allow-Origin: *");
 
 $router->map('GET', '/','App\Modules\Home\Controller::home');
 
-$router->map('GET', '/create','App\Modules\Posts\Controller::create');
-$router->map('GET', '/manage','App\Modules\Posts\Controller::manage')->middleware($auth);
+$router->map('GET', '/create','App\Modules\Posts\Controller::create')->middleware(new AuthMiddleware);
+$router->map('GET', '/manage','App\Modules\Posts\Controller::manage')->middleware(new AuthMiddleware);
 $router->map('GET', '/job/{id:number}','App\Modules\Posts\Controller::getOne');
 $router->map('POST', '/create','App\Modules\Posts\Controller::createPost');
 
@@ -40,6 +31,7 @@ $router->map('GET', '/signin','App\Modules\Auth\Controller::signin');
 
 $router->map('POST', '/register','App\Modules\Auth\Controller::userRegister');
 $router->map('POST', '/signin','App\Modules\Auth\Controller::userSignin');
+$router->map('DELETE', '/delete','App\Modules\Auth\Controller::logout');
 
 $response = $router->dispatch($request);
 

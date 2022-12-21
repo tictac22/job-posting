@@ -1,0 +1,18 @@
+.auth__link {
+	justify-content: center;
+}
+.auth__link--uppercase {
+	text-transform: uppercase;
+}
+.auth__login {
+	display: flex;
+	margin-left: 20px;
+	align-items: center;
+	cursor: pointer;
+}
+.auth__login:hover {
+	text-decoration: underline;
+}
+.auth__login p {
+	margin-left: 3px;
+}

@@ -13,18 +13,21 @@ use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\Response\RedirectResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use App\Modules\User\Module as UserModule;
 
 class Controller {
 
 	protected $twig;
 	protected $model;
+	protected $user;
 	function __construct() {
 		$this->twig = new Twig();
 		$this->model = new Model();
+		$this->user = new UserModule();
 	}
 
 	function register(ServerRequestInterface $request):ResponseInterface {
-		$result = $this->twig->render('register.twig', ['title' => 'Register']);
+		$result = $this->twig->render('register.twig', ['title' => 'Register']);		
         return new HtmlResponse($result);
     }
 	function signin():ResponseInterface {
@@ -63,18 +66,14 @@ class Controller {
 			$response->getBody()->write(json_encode(['email' => 'Error on server side']));
 			return $response->withStatus(400);
 		}
-		$redirect = new RedirectResponse(BASE_URI . '/manage',302, [
-			'Location' => BASE_URI . '/manage',
-		]);
-		header("Location:" . BASE_URI . '/manage');
-		return $redirect;
+		return $this->returnRedirect('/manage');
     }
 	function userSignin(ServerRequestInterface $request):ResponseInterface {
 		$response = new Response;
 		try {
 			ValidationC::validate($request->getParsedBody(),[
-				'email'                 => 'required|email|min:20',
-				'password'              => 'required|min:20',
+				'email'                 => 'required|email',
+				'password'              => 'required|min:5',
 			]);
 		} catch (ExcBody $th) {
 			$response->getBody()->write(json_encode($th->getErrors()));
@@ -82,9 +81,31 @@ class Controller {
 			return $response->withStatus(400);
 			exit();
 		}
+		try {
+			$this->model->login($request->getParsedBody());
 
-		$response->getBody()->write(json_encode($request->getParsedBody()));
-
-		return $response;
+		} catch (\Throwable $th) {
+			$response->getBody()->write(json_encode(['email' => 'email or password are incorrect', 'password' => 'email or password are incorrect']));
+			return $response->withStatus(400);
+			exit();
+		}
+		$redirect = new RedirectResponse(BASE_URI . '/manage',302, [
+			'Location' => BASE_URI . '/manage',
+		]);
+		header("Location:" . BASE_URI . '/manage');
+		return $redirect;
     }
+	function logout():ResponseInterface {
+		$this->user::logout();
+
+		return $this->returnRedirect('/');
+	}
+
+	function returnRedirect($path):ResponseInterface {
+		$redirect = new RedirectResponse(BASE_URI . $path,302, [
+			'Location' => BASE_URI . $path,
+		]);
+		header("Location:" . BASE_URI . $path);
+		return $redirect;
+	}
 }

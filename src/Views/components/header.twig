@@ -7,6 +7,18 @@
 				</a>
 			</div>
 			<div class="header__auth auth">
+			{% if user %}
+				<p class="auth__link auth__link--uppercase">WELCOME {{user['name']}}</p>
+				<a class="auth__login" href={{BASE_URI ~ '/manage' }}>
+					<i class="fa-sharp fa-solid fa-gear"></i>
+					<p class=''>Manage listings</p>
+				</a>
+				<div class="auth__login">
+					<i class="fa-solid fa-door-closed"></i>
+					<p class='logout'>Logout</p>
+				</div>
+				
+			{% else %}
 				<a class="auth__link" href={{BASE_URI ~ '/register' }}>
 					<i class="fa-solid fa-user-plus"></i>
 					<p>Sign up</p>
@@ -15,6 +27,7 @@
 					<i class="fa-solid fa-right-to-bracket"></i>
 					<p>Login</p>
 				</a>
+			{% endif %}
 			</div>
 		</div>
 	</div>

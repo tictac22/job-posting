@@ -23,13 +23,7 @@ class AuthMiddleware extends DB implements MiddlewareInterface {
 		]);
 		return $redirect;
 	}
-	function getUserById(string $session) {
-		$sql = "SELECT sessions.*,u.name, u.email FROM `sessions` JOIN users u USING(user_id) WHERE SESSION = :session";
-		$query = self::$db->prepare($sql);
-		$query->execute(['session' => $session]);
-		return $query->fetch();
-
-	}
+	
 }
 
 
