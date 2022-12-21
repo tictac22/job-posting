@@ -18,6 +18,8 @@
 		"laminas/laminas-httphandlerrunner": "^2.4",
 		"league/container": "^4.2",
 		"twig/twig": "^3.4",
-		"rakit/validation": "^1.4"
+		"rakit/validation": "^1.4",
+		"cloudinary/cloudinary_php": "^2.9",
+		"spatie/image-optimizer": "^1.6"
 	}
 }

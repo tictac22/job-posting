@@ -2,6 +2,7 @@
 
 
 namespace App\Modules\Posts;
+use App\Modules\Posts\Module as PostModel;
 
 use Laminas\Diactoros\Response\HtmlResponse;
 use Core\System\Twig;
@@ -11,12 +12,21 @@ use Psr\Http\Message\ServerRequestInterface;
 use Rakit\Validation\Validator;
 use App\Modules\User\Module as UserModule;
 
+use Core\System\Exceptions\ExcBody;
+use Core\System\Validation as ValidationC;
+use Core\System\File;
+use Laminas\Diactoros\Response\RedirectResponse;
+
 class Controller {
 	public $twig;
 	protected $user;
+	protected File $file;
+	protected PostModel $model;
 	function __construct() {
 		$this->user = new UserModule();
 		$this->twig = new Twig();
+		$this->file = new File();
+		$this->model = new PostModel();
 	}
 	function getOne():ResponseInterface {
 		$user = $this->user::getUser();
@@ -37,26 +47,42 @@ class Controller {
 	function createPost(ServerRequestInterface $request):ResponseInterface {
 		$response = new Response;
 
-		$validator = new Validator;
-		$validation = $validator->make($request->getParsedBody() + $_FILES, [
-		'name'                 => 'required|email|min:20',
-		'title'                 => 'required|email|min:20',
-		'decsr'                 => 'required|email|min:20',
-		'tags'                 => 'required|email|min:20',
-		'image'                 => 'required|uploaded_file:0,500K,png,jpeg',
-		'location'                 => 'required|email|min:20',
-		]);
-		$validation->validate();
-		if ($validation->fails()) {
-			$errors = $validation->errors();
-			$response->getBody()->write(json_encode($errors->firstOfAll()));
+		$body = $request->getParsedBody();
+
+		try {
+			ValidationC::validate($body + $_FILES, [
+				'name'                 => 'required|min:5',
+				'title'                 => 'required|min:5',
+				'decsr'                 => 'required|min:5',
+				'tags'                 => 'required|min:5',
+				'location'                 => 'required||min:5',
+	
+			]);
+		} catch ( ExcBody $th) {
+			$response->getBody()->write(json_encode($th->getErrors()));
 			$response;
 			return $response->withStatus(400);
 			exit();
 		}
 
-		$response->getBody()->write(json_encode($request->getParsedBody()));
-		//print_r($_FILES);
-		return $response;
+		try {
+			
+			$file = $this->file->upload($_FILES['image']);
+			$imageUrl = $file['secure_url'];
+			$body['image'] = $imageUrl;
+
+			$post_id = $this->model->createPost($body);
+		} catch (\Throwable $th) {
+			echo $th->getMessage();
+			$response->getBody()->write(json_encode($body));
+			return $response->withStatus(400);
+		}
+
+		$redirect = new RedirectResponse(BASE_URI . '/' . 'job/' . $post_id,302, [
+			'Location' => BASE_URI . '/' . 'job/' . $post_id,
+		]);
+		header("Location:" . BASE_URI . '/' .  'job/' . $post_id);
+		return $redirect;
+
     }
 }
