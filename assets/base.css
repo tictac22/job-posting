@@ -67,3 +67,6 @@
 	margin-top: 3px;
 	color: gray;
 }
+.job__title:hover {
+	text-decoration: underline;
+}

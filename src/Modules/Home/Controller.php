@@ -21,11 +21,6 @@ class Controller {
 	function home():ResponseInterface {
 		$user = $this->user::getUser();
 		$posts = $this->model->getArticles();
-		foreach ($posts as $key => $post) {
-			$tags = explode(',',$post['tags']);
-			$post['tags'] = $tags;
-			$posts[$key] = $post;
-		}
 		$result = $this->twig->render('index.twig', ['title' => 'Thrivetalk','user' => $user,'posts' => $posts]);
         return new HtmlResponse($result);
     }

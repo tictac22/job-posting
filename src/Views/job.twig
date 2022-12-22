@@ -14,25 +14,21 @@
 				<div class="job">
 					<div class="container">
 						<div class="job__img">
-							<img src={{BASE_URI ~ '/assets/images/wayne.png'}} />
+							<img src={{post.image}} />
 						</div>
 						<div class="job__descr">
-							<h3 class="job__title">Senior Developer | Laravel & Vue</h3>
-							<h4 class="job__company">Wonka Industries</h4>
+							<h3 class="job__title">{{post.title}}</h3>
+							<h4 class="job__company">{{post.company_name}}</h4>
 							<ul class="job__tags">
+								{% for tag in post.tags %}
 								<li class="job__tag">
-									<a href="/"> Laravel </a>
+									{{tag}}
 								</li>
-								<li class="job__tag">
-									<a href="/"> Api </a>
-								</li>
-								<li class="job__tag">
-									<a href="/"> Vue </a>
-								</li>
+							{% endfor %}
 							</ul>
 							<div class="job__location">
 								<i class="fa-sharp fa-solid fa-location-pin"></i>
-								<p>Miami, Fl</p>
+								<p>{{post.location}}</p>
 							</div>
 						</div>
 					</div>
@@ -41,12 +37,7 @@
 					<div class="container">
 						<h1 class="about__title">Job Description</h1>
 						<p class="about__text">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a cursus nisl. Sed et
-							aliquet tellus. Suspendisse euismod et metus sed elementum. Duis sed ante tellus. Proin id
-							justo sapien. Donec eget eleifend enim, ac tincidunt mauris. Nam pulvinar blandit sem, sit
-							amet faucibus leo tincidunt sit amet. Praesent congue viverra felis, ut consectetur tortor.
-							Sed fringilla purus sapien, vitae tristique leo lobortis at. Curabitur vitae urna sed ante
-							condimentum vulputate
+							{{post.decsr}}
 						</p>
 						<button class="about__button about__button--apply">
 							<i class="fa-solid fa-file"></i>

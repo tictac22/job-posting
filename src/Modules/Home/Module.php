@@ -12,7 +12,15 @@ class Module  extends Db{
 		$sql = "SELECT * FROM posts";
 		$query = parent::$db->prepare($sql);
 		$query->execute();
-		return $query->fetchAll();
+		$posts =  $query->fetchAll();
+
+		foreach ($posts as $key => $post) {
+			$tags = explode(',',$post['tags']);
+			$post['tags'] = $tags;
+			$posts[$key] = $post;
+		}
+
+		return $posts;
 	}
 
 }

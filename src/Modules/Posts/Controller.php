@@ -28,9 +28,12 @@ class Controller {
 		$this->file = new File();
 		$this->model = new PostModel();
 	}
-	function getOne():ResponseInterface {
+	function getOne(ServerRequestInterface $request):ResponseInterface {
+		$query = ($request->getQueryParams())['querysystemurl'];
+		$id = (int)substr($query,4);
 		$user = $this->user::getUser();
-		$result = $this->twig->render('job.twig', ['title' => 'Create','user' => $user]);
+		$post = $this->model->getOne($id);
+		$result = $this->twig->render('job.twig', ['title' => 'Create','user' => $user,'post' => $post]);
         return new HtmlResponse($result);
     }
 	function create():ResponseInterface {

@@ -7,11 +7,11 @@ use Core\System\Db;
 class Module extends Db {
 
 	static function getUser() {
-		$token =  $_SESSION['token'] ?? $_COOKIE['token'] ?? null;
-		if(!$token) return [];
-		$sql = "SELECT sessions.*,u.name, u.email FROM `sessions` JOIN users u USING(user_id) WHERE SESSION = :session";
+		$user_id =  $_SESSION['user_id'] ?? null;
+		if(!$user_id) return [];
+		$sql = "SELECT * FROM users where user_id = :user_id";
 		$query = self::$db->prepare($sql);
-		$query->execute(['session' => $token]);
+		$query->execute(['user_id' => $user_id]);
 		return $query->fetch();
 
 	}

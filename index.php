@@ -5,6 +5,7 @@ declare(strict_types=1);
 include_once('init.php');
 require_once 'vendor/autoload.php';
 
+session_start();
 use Core\System\AuthMiddleware;
 
 $uri = '/job-post';
