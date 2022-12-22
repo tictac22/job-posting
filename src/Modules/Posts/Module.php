@@ -15,9 +15,8 @@ class Module extends Db {
 		$user = $this->user->getUser();
 
 		$fields['user_id'] = $user['user_id'];
-
+		
 		$sql = "INSERT INTO posts (user_id, company_name, title, decsr, tags, image, location) VALUES (:user_id,:name,:title,:decsr,:tags,:image,:location)";
-		//$sql = "INSERT INTO posts (company_name, title, location, tags, tags, image, location,) VALUES (:user_id,:name,:title,:decsr,:tags,:image,:location') ";
 		$query = parent::$db->prepare($sql);
 		$query->execute($fields);
 		$query->fetch();

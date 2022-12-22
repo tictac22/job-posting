@@ -45,8 +45,9 @@
 						<p class="form__error">Error</p>
 					</div>
 					<div class="form__input input">
-						<input type="file" name="image" id="image" class="input__input" />
+						<input type="file" name="image" id="image" class="input__input" accept="image/png, image/jpeg" />
 						<label class="input__label" for="image">Company Logo</label>
+						<span class='form__input--logo'>*The bigger image, the longer is request</span>
 						<p class="form__error">Error</p>
 					</div>
 					<div class="form__input input">
@@ -60,10 +61,7 @@
 						<p class="form__error">Error</p>
 						<p class="form__input--hint">255 characters left</p>
 					</div>
-					<button class="form__button button" type="submit">Sign In</button>
-					<p class="form__text-down">
-						Don't have an account? <a class="form__regirect" href="#">Register</a>
-					</p>
+					<button class="form__button button" type="submit"><span>Post</span><div class="lds-ring"><div></div><div></div><div></div><div></div></div></button>
 				</div>
 			</div>
 		</form>

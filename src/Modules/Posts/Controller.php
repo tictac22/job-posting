@@ -49,6 +49,7 @@ class Controller {
 
 		$body = $request->getParsedBody();
 
+		
 		try {
 			ValidationC::validate($body + $_FILES, [
 				'name'                 => 'required|min:5',
@@ -70,7 +71,6 @@ class Controller {
 			$file = $this->file->upload($_FILES['image']);
 			$imageUrl = $file['secure_url'];
 			$body['image'] = $imageUrl;
-
 			$post_id = $this->model->createPost($body);
 		} catch (\Throwable $th) {
 			echo $th->getMessage();
