@@ -7,6 +7,7 @@ use Laminas\Diactoros\Response\HtmlResponse;
 use Core\System\Twig;
 use Psr\Http\Message\ResponseInterface;
 use App\Modules\User\Module as UserModule;
+use Psr\Http\Message\ServerRequestInterface;
 
 class Controller {
 	public $twig;
@@ -18,9 +19,11 @@ class Controller {
 		$this->model = new ModuleC();
 	}
 
-	function home():ResponseInterface {
+	function home(ServerRequestInterface $request):ResponseInterface {
 		$user = $this->user::getUser();
-		$posts = $this->model->getArticles();
+
+		$param = ($request->getQueryParams())['tag'] ?? '';
+		$posts = $this->model->getArticles($param);
 		$result = $this->twig->render('index.twig', ['title' => 'Thrivetalk','user' => $user,'posts' => $posts]);
         return new HtmlResponse($result);
     }

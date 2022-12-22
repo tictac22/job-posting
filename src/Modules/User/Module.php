@@ -19,8 +19,8 @@ class Module extends Db {
 		$sql = "DELETE FROM sessions WHERE session = :session";
 		$query = self::$db->prepare($sql);
 		$query->execute(['session' =>  $_COOKIE['token']]);
-
 		unset($_COOKIE['token']);
+		session_destroy();
 		setcookie('token', null, -1, BASE_URI);
 	}	
 }

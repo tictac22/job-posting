@@ -23,7 +23,22 @@ class Module extends Db {
 
 		return $post;
 	}
-
+	function getAll() {
+		$id = $_SESSION['user_id'];
+	
+		$sql = "SELECT title, post_id FROM posts WHERE user_id =:user_id";
+		$query = parent::$db->prepare($sql);
+		$query->execute(['user_id' => $id]);
+		$post  =  $query->fetchAll();
+		return $post;
+	}
+	function deletePost(int $id) {
+		$sql = "DELETE FROM `posts` WHERE post_id = :post_id";
+		$query = parent::$db->prepare($sql);
+		$query->execute(['post_id' => $id]);
+		$post  =  $query->fetchAll();
+		return $post;
+	}
 	function createPost(array $fields) {
 		$user = $this->user->getUser();
 

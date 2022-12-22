@@ -8,10 +8,16 @@ use Core\System\Db;
 class Module  extends Db{
 
 
-	function getArticles() {
-		$sql = "SELECT * FROM posts";
+	function getArticles(string $tag) {
+		if($tag) {
+			$sql = 'SELECT * FROM `posts` WHERE MATCH(title,tags) AGAINST(:tag)';
+			$fields = ['tag'  => $tag];
+		} else {
+			$sql = "SELECT * FROM posts";
+			$fields = [];
+		}
 		$query = parent::$db->prepare($sql);
-		$query->execute();
+		$query->execute($fields);
 		$posts =  $query->fetchAll();
 
 		foreach ($posts as $key => $post) {

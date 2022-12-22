@@ -13,48 +13,22 @@
 					<div class="container">
 						<div class="manage__inner">
 							<h1>Manage jobs</h1>
+							<a class='link--create' href={{BASE_URI ~ '/create'}}>Create new one</a>
 						</div>
-						<div class="manage__list">
-							<div class="manage__list--item list--item">
-								<p>Senior Developer | Laravel & Vue</p>
-								<div class="list--item__action list--item__action--edit">
-									<a href="#">
-										<p>Edit</p>
-									</a>
-									<i class="fa-solid fa-pen-to-square"></i>
-								</div>
-								<div class="list--item__action list--item__action--delete">
-									<p>Delete</p>
-									<i class="fa-sharp fa-solid fa-trash"></i>
-								</div>
-							</div>
-							<div class="manage__list--item list--item">
-								<p>Senior Developer | Laravel & Vue</p>
-								<div class="list--item__action list--item__action--edit">
-									<a href="#">
-										<p>Edit</p>
-									</a>
-									<i class="fa-solid fa-pen-to-square"></i>
-								</div>
-								<div class="list--item__action list--item__action--delete">
-									<p>Delete</p>
-									<i class="fa-sharp fa-solid fa-trash"></i>
-								</div>
-							</div>
-							<div class="manage__list--item list--item">
-								<p>Senior Developer | Laravel & Vue</p>
-								<div class="list--item__action list--item__action--edit">
-									<a href="#">
-										<p>Edit</p>
-									</a>
-									<i class="fa-solid fa-pen-to-square"></i>
-								</div>
-								<div class="list--item__action list--item__action--delete">
-									<p>Delete</p>
-									<i class="fa-sharp fa-solid fa-trash"></i>
-								</div>
-							</div>
-						</div>
+						<table class="manage__list">
+							<tbody>
+								{% for post in posts %}
+									<tr class="manage__list--item list--item">
+										<td class='table__data'>{{post.title}}</td>
+										<td class="list--item__action list--item__action--delete">
+											<form method='post' action={{BASE_URI ~ '/delete-post/' ~ post.post_id}} >
+											<button class='form__button--delete' type='submit'><span>Delete</span> <i class="fa-sharp fa-solid fa-trash"></i></button>										
+											</form>
+										</td> 
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</main>

@@ -27,10 +27,6 @@
 		</div>
 		<div class="jobs">
 			<div class="container">
-				<form class="jobs__form form" method="post">
-					<input class="form__input" type="text" name="search" placeholder="Search Thrivetalk jobs" />
-					<button class="form__button button" type="submit">Search</button>
-				</form>
 				<div class="jobs__inner">
 				{% for post in posts %}
 					<div class="job">
@@ -43,9 +39,10 @@
 							<ul class="job__tags">
 							{% for tag in post.tags %}
 								<li class="job__tag">
-									<a href="/"> {{tag}} </a>
+									<a href={{BASE_URI ~ '/?tag=' ~ tag}} > {{tag}} </a>
 								</li>
 							{% endfor %}
+							<p class='job__tag-descr'>Click on tag search to search on it</p>
 							</ul>
 							<div class="job__location">
 								<i class="fa-sharp fa-solid fa-location-pin"></i>
@@ -54,20 +51,6 @@
 						</div>
 					</div>
 				{% endfor %}
-				</div>
-			</div>
-		</div>
-		<div class="pagination">
-			<div class="container">
-				<div class="pagination__inner">
-					<div class="pagination__paginator paginator paginator-left">
-						<i class="fa-sharp fa-solid fa-arrow-left"></i>
-					</div>
-					<div class="pagination__paginator paginator">1</div>
-					<div class="pagination__paginator paginator">2</div>
-					<div class="pagination__paginator paginator paginator-right">
-						<i class="fa-sharp fa-solid fa-arrow-right"></i>
-					</div>
 				</div>
 			</div>
 		</div>

@@ -70,3 +70,34 @@
 .job__title:hover {
 	text-decoration: underline;
 }
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+td {
+	padding: 10px;
+}
+.table__data {
+	width: 50%;
+}
+.form__button--delete {
+	background: none;
+	display: flex;
+	font-size: 16px;
+	color: red;
+}
+
+.link--create {
+	margin: 15px 0px;
+	display: inline-block;
+	color: blueviolet;
+}
+.link--create:hover {
+	text-decoration: underline;
+}
+.job__tag-descr {
+	margin-top: 3px;
+	font-size: 12px;
+	color: gray;
+}

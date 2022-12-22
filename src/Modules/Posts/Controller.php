@@ -44,9 +44,22 @@ class Controller {
     }
 	function manage():ResponseInterface {
 		$user = $this->user::getUser();
-		$result = $this->twig->render('manage.twig', ['title' => 'Listings','user' =>$user]);
+		$posts = $this->model->getAll();
+	
+		$result = $this->twig->render('manage.twig', ['title' => 'Listings','user' =>$user, 'posts' => $posts]);
         return new HtmlResponse($result);
     }
+	function deletePost(ServerRequestInterface $request):ResponseInterface {
+		$query = ($request->getQueryParams())['querysystemurl'];
+		$id = (int)substr($query,12);
+		$this->model->deletePost($id);
+
+		$redirect = new RedirectResponse(BASE_URI . '/manage' ,302, [
+			'Location' => BASE_URI . '/manage',
+		]);
+		header("Location:" . BASE_URI . '/manage');
+		return $redirect;
+	}
 	function createPost(ServerRequestInterface $request):ResponseInterface {
 		$response = new Response;
 

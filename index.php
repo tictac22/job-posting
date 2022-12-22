@@ -25,7 +25,7 @@ $router->map('GET', '/create','App\Modules\Posts\Controller::create')->middlewar
 $router->map('GET', '/manage','App\Modules\Posts\Controller::manage')->middleware(new AuthMiddleware);
 $router->map('GET', '/job/{id:number}','App\Modules\Posts\Controller::getOne');
 $router->map('POST', '/create','App\Modules\Posts\Controller::createPost');
-
+$router->map('POST', '/delete-post/{id:number}','App\Modules\Posts\Controller::deletePost');
 
 $router->map('GET', '/register','App\Modules\Auth\Controller::register');
 $router->map('GET', '/signin','App\Modules\Auth\Controller::signin');
