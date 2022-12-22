@@ -32,81 +32,28 @@
 					<button class="form__button button" type="submit">Search</button>
 				</form>
 				<div class="jobs__inner">
+				{% for post in posts %}
 					<div class="job">
 						<div class="job__img">
-							<img src={{BASE_URI ~ "/assets/images/wayne.png"}} />
+							<img src={{post.image}} />
 						</div>
 						<div class="job__descr">
-							<h3 class="job__title">Senior Developer | Laravel & Vue</h3>
-							<h4 class="job__company">Wonka Industries</h4>
+							<h3 class="job__title">{{post.title}}</h3>
+							<h4 class="job__company">{{post.company_name}}</h4>
 							<ul class="job__tags">
+							{% for tag in post.tags %}
 								<li class="job__tag">
-									<a href="/"> Laravel </a>
+									<a href="/"> {{tag}} </a>
 								</li>
-								<li class="job__tag">
-									<a href="/"> Api </a>
-								</li>
-								<li class="job__tag">
-									<a href="/"> Vue </a>
-								</li>
+							{% endfor %}
 							</ul>
 							<div class="job__location">
 								<i class="fa-sharp fa-solid fa-location-pin"></i>
-								<p>Miami, Fl</p>
+								<p>{{post.location}}</p>
 							</div>
 						</div>
 					</div>
-					<div class="job">
-						<div class="job__img">
-							<img src={{BASE_URI ~ "/assets/images/wayne.png"}}  />
-						</div>
-						<div class="job__descr">
-							<h3 class="job__title">
-								Senior Developer | Laravel & Vue Senior Developer | Laravel & Vue Senior
-								Developer | Laravel & Vue
-							</h3>
-							<h4 class="job__company">Wonka Industries</h4>
-							<ul class="job__tags">
-								<li class="job__tag">
-									<a href="/"> Laravel </a>
-								</li>
-								<li class="job__tag">
-									<a href="/"> Api </a>
-								</li>
-								<li class="job__tag">
-									<a href="/"> Vue </a>
-								</li>
-							</ul>
-							<div class="job__location">
-								<i class="fa-sharp fa-solid fa-location-pin"></i>
-								<p>Miami, Fl</p>
-							</div>
-						</div>
-					</div>
-					<div class="job">
-						<div class="job__img">
-							<img src={{BASE_URI ~ "/assets/images/wayne.png"}} />
-						</div>
-						<div class="job__descr">
-							<h3 class="job__title">Senior Developer | Laravel & Vue</h3>
-							<h4 class="job__company">Wonka Industries</h4>
-							<ul class="job__tags">
-								<li class="job__tag">
-									<a href="/"> Laravel </a>
-								</li>
-								<li class="job__tag">
-									<a href="/"> Api </a>
-								</li>
-								<li class="job__tag">
-									<a href="/"> Vue </a>
-								</li>
-							</ul>
-							<div class="job__location">
-								<i class="fa-sharp fa-solid fa-location-pin"></i>
-								<p>Miami, Fl</p>
-							</div>
-						</div>
-					</div>
+				{% endfor %}
 				</div>
 			</div>
 		</div>
