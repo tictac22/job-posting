@@ -98,7 +98,7 @@ class Controller {
 	function logout():ResponseInterface {
 		$this->user::logout();
 
-		return $this->returnRedirect('/');
+		return $this->j('/');
 	}
 
 	function returnRedirect($path):ResponseInterface {
