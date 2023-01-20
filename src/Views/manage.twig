@@ -1,0 +1,35 @@
+
+
+{% extends "components/base.twig" %}
+
+{% block scripts %}
+	<script type="module" crossorigin href={{BASE_URI ~ '/assets/modulepreload-polyfill-ec808ebb.js'}}></script>
+	<link rel="stylesheet" href={{BASE_URI ~ '/assets/manage-a6ab2c21.css'}} />
+{% endblock %}
+
+{% block content %}
+	<main class="">
+				<div class="manage">
+					<div class="container">
+						<div class="manage__inner">
+							<h1>Manage jobs</h1>
+							<a class='link--create' href={{BASE_URI ~ '/create'}}>Create new one</a>
+						</div>
+						<table class="manage__list">
+							<tbody>
+								{% for post in posts %}
+									<tr class="manage__list--item list--item">
+										<td class='table__data'>{{post.title}}</td>
+										<td class="list--item__action list--item__action--delete">
+											<form method='post' action={{BASE_URI ~ '/delete-post/' ~ post.post_id}} >
+											<button class='form__button--delete' type='submit'><span>Delete</span> <i class="fa-sharp fa-solid fa-trash"></i></button>										
+											</form>
+										</td> 
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</main>
+{% endblock %}

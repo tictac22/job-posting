@@ -1,0 +1,38 @@
+
+{% extends "components/base.twig" %}
+{% block scripts %}
+	<script type="module" crossorigin src={{ BASE_URI ~ "/assets/login-e10313fd.js"}}></script>
+	<link rel="modulepreload" crossorigin href={{ BASE_URI ~  "/assets/modulepreload-polyfill-ec808ebb.js"}}>
+	<link rel="modulepreload" crossorigin href={{ BASE_URI ~  "/assets/form-420052dc.js"}}>
+	<link rel="stylesheet" href={{ BASE_URI ~ "/assets/login-356872da.css"}}>
+{% endblock %}
+
+{% block content %}
+
+	<main class="main__center">
+		<form class="form" method="post">
+			<div class="container">
+				<div class="form__inner">
+					<div class="form__descr">
+						<h1 class="form__title">Login</h1>
+						<p class="form__text">Log in your account to post jobs</p>
+					</div>
+					<div class="form__input input">
+						<input type="text" name="email" id="email" class="input__input" />
+						<label class="input__label" for="email">Email</label>
+						<p class="form__error">Error</p>
+					</div>
+					<div class="form__input input">
+						<input type="password" name="password" id="password" class="input__input" />
+						<label class="input__label" for="password">Password</label>
+						<p class="form__error">Error</p>
+					</div>
+					<button class="form__button button" type="submit">Sign In</button>
+					<p class="form__text-down">
+						Don't have an account? <a class="form__redirect" href={{BASE_URI ~ '/register'}}>Register</a>
+					</p>
+				</div>
+			</div>
+		</form>
+	</main>
+{% endblock %}

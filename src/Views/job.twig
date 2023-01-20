@@ -1,0 +1,53 @@
+
+
+
+
+{% extends "components/base.twig" %}
+
+{% block scripts %}
+	<script type="module" crossorigin src={{BASE_URI ~ '/assets/modulepreload-polyfill-ec808ebb.js'}}></script>
+	<link rel="stylesheet" href={{BASE_URI ~ '/assets/job-34c431eb.css'}}>
+{% endblock %}
+
+{% block content %}
+	<main class="">
+				<div class="job">
+					<div class="container">
+						<div class="job__img">
+							<img src={{post.image}} />
+						</div>
+						<div class="job__descr">
+							<h3 class="job__title">{{post.title}}</h3>
+							<h4 class="job__company">{{post.company_name}}</h4>
+							<ul class="job__tags">
+								{% for tag in post.tags %}
+								<li class="job__tag">
+									{{tag}}
+								</li>
+							{% endfor %}
+							</ul>
+							<div class="job__location">
+								<i class="fa-sharp fa-solid fa-location-pin"></i>
+								<p>{{post.location}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="about">
+					<div class="container">
+						<h1 class="about__title">Job Description</h1>
+						<p class="about__text">
+							{{post.decsr}}
+						</p>
+						<button class="about__button about__button--apply">
+							<i class="fa-solid fa-file"></i>
+							Apply
+						</button>
+						<button class="about__button about__button--visit">
+							<i class="fa-sharp fa-solid fa-globe"></i>
+							Visit website
+						</button>
+					</div>
+				</div>
+			</main>
+{% endblock %}

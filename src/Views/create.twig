@@ -1,0 +1,71 @@
+
+
+
+{% extends "components/base.twig" %}
+
+{% block scripts %}
+	<script type="module" crossorigin src={{ BASE_URI ~ "/assets/create-1a38020c.js"}} ></script>
+	<link rel="modulepreload" crossorigin href={{ BASE_URI ~ "/assets/modulepreload-polyfill-ec808ebb.js"}}>
+	<link rel="modulepreload" crossorigin href={{ BASE_URI ~ "/assets/form-420052dc.js" }}>
+	<link rel="stylesheet" href={{ BASE_URI ~ "/assets/create-b4880b73.css"}}>
+{% endblock %}
+{% block content %}
+	<main>
+		<form class="form" method="post">
+			<div class="container">
+				<div class="form__inner">
+					<div class="form__descr">
+						<h1 class="form__title">Create</h1>
+						<p class="form__text">Create a post to find a developer</p>
+					</div>
+					<div class="form__input input">
+						<input type="text" name="name" id="name" class="input__input" />
+						<label class="input__label" for="name">Company Name</label>
+						<p class="form__error">Error</p>
+					</div>
+					<div class="form__input input">
+						<input type="text" name="title" id="title" class="input__input" />
+						<label class="input__label" for="title">Job title</label>
+						<p class="form__error">Error</p>
+					</div>
+					<div class="form__input input">
+						<input
+							type="text"
+							name="location"
+							placeholder="Example: Remote, Latvia Riga"
+							id="location"
+							class="input__input"
+						/>
+						<label class="input__label" for="location">Job location</label>
+						<p class="form__error">Error</p>
+					</div>
+					<div class="form__input input">
+						<input type="text" name="tags" id="tags" class="input__input" />
+						<label class="input__label" for="tags">Tags(Comma Separated)</label>
+						<p class="form__error">Error</p>
+					</div>
+					<div class="form__input input">
+						<input type="file" name="image" id="image" class="input__input" accept="image/png, image/jpeg" />
+						<label class="input__label" for="image">Company Logo</label>
+						<span class='form__input--logo'>*The bigger image, the longer is request</span>
+						<p class="form__error">Error</p>
+					</div>
+					<div class="form__input input">
+						<textarea
+							maxlength="255"
+							class="input__input input__descrp"
+							id="description"
+							name="decsr"
+						></textarea>
+						<label class="input__label" for="description">Job description</label>
+						<p class="form__error">Error</p>
+						<p class="form__input--hint">255 characters left</p>
+					</div>
+					<button class="form__button button" type="submit"><span>Post</span><div class="lds-ring"><div></div><div></div><div></div><div></div></div></button>
+				</div>
+			</div>
+		</form>
+	</main>
+
+		
+{% endblock %}

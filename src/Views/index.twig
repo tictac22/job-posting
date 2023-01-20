@@ -1,0 +1,58 @@
+
+
+{% extends "components/base.twig" %}
+
+{% block scripts %}
+	<script type="module" crossorigin src={{ BASE_URI ~ "/assets/modulepreload-polyfill-ec808ebb.js"}}></script>
+	<link rel="stylesheet" href={{ BASE_URI ~ 'assets/index-a8a2efcd.css'}} />
+	<style>
+	
+	</style>
+{% endblock %}
+
+{% block content %}
+	<main>
+		<div class="banner">
+			<div class="container">
+				<div class="banner__inner">
+					<h1 class="banner__title">Thrivetalk</h1>
+					<p class="banner__text">Find or post Web developer jobs</p>
+					{% if user %}
+						<a href={{BASE_URI ~ '/create'}} class="banner__button button">POST A JOB</a>
+					{% else %}
+						<a href={{BASE_URI ~ '/register'}} class="banner__button button">SIGN UP TO LIST A JOB</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="jobs">
+			<div class="container">
+				<div class="jobs__inner">
+				{% for post in posts %}
+					<div class="job">
+						<div class="job__img">
+							<img src={{post.image}} />
+						</div>
+						<div class="job__descr">
+							<a href={{BASE_URI ~ '/job/' ~ post.post_id}} class="job__title">{{post.title}}</a>
+							<h4 class="job__company">{{post.company_name}}</h4>
+							<ul class="job__tags">
+							{% for tag in post.tags %}
+								<li class="job__tag">
+									<a href={{BASE_URI ~ '/?tag=' ~ tag}} > {{tag}} </a>
+								</li>
+							{% endfor %}
+							<p class='job__tag-descr'>Click on tag search to search on it</p>
+							</ul>
+							<div class="job__location">
+								<i class="fa-sharp fa-solid fa-location-pin"></i>
+								<p>{{post.location}}</p>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+	</main>		
+{% endblock %}
