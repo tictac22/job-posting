@@ -1,15 +1,16 @@
 RewriteEngine on
 
 # Rewrite all other URLs to index.php?[URL]
+
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule .* index.php?querysystemurl=$0 [QSA]
+RewriteRule .\* index.php?querysystemurl=$0 [QSA]
 
 Options -Indexes
 
 <FilesMatch "\.(php)$">
-	Deny from all
+Deny from all
 </FilesMatch>
 
 <FilesMatch "index.(php)$">
-	Allow from all
+Allow from all
 </FilesMatch>

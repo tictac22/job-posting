@@ -1,4 +1,4 @@
-import { B as r, F as m, m as t } from "./form-420052dc.js"
+import { F as m, m as t } from "./form-420052dc.js"
 import "./modulepreload-polyfill-ec808ebb.js"
 const o = document.querySelector(".form"),
 	i = ["name", "email", "password", "confirm"],
@@ -22,7 +22,11 @@ o.addEventListener("submit", async (s) => {
 	s.preventDefault()
 	const a = new m(o, i, c)
 	a.validate()
-	const e = await fetch(r + "/register", { body: new FormData(o), method: "POST", redirect: "follow" })
+	const e = await fetch("https://usebluecollar.xyz/register", {
+		body: new FormData(o),
+		method: "POST",
+		redirect: "follow",
+	})
 	console.log(e)
 	if (!e.ok) {
 		console.log("oooosss")
@@ -33,4 +37,3 @@ o.addEventListener("submit", async (s) => {
 		window.location.href = e.url
 	}
 })
-

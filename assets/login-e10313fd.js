@@ -1,4 +1,4 @@
-import { B as n, F as m, m as o } from "./form-420052dc.js"
+import { F as m, m as o } from "./form-420052dc.js"
 import "./modulepreload-polyfill-ec808ebb.js"
 const t = document.querySelector(".form"),
 	i = ["email", "password"],
@@ -14,7 +14,7 @@ t.addEventListener("submit", async (r) => {
 	const s = new m(t, i, c)
 	try {
 		s.validate()
-		const e = await fetch(n + "/signin", { body: new FormData(t), method: "POST" })
+		const e = await fetch("https://usebluecollar.xyz/signin", { body: new FormData(t), method: "POST" })
 		if (!e.ok) {
 			const n = await e.json()
 			s.setErrors(n)
@@ -26,4 +26,3 @@ t.addEventListener("submit", async (r) => {
 		console.log(e.message)
 	}
 })
-

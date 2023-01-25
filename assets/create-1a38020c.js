@@ -1,4 +1,4 @@
-import { B as k, F as i, m as e } from "./form-420052dc.js"
+import { F as i, m as e } from "./form-420052dc.js"
 import "./modulepreload-polyfill-ec808ebb.js"
 const a = document.querySelector(".form__button")
 document.querySelector(".input__descrp").onkeyup = function () {
@@ -25,7 +25,11 @@ n.addEventListener("submit", async (r) => {
 		s.validate()
 		a.classList.add("form--loading")
 		a.disabled = true
-		const t = await fetch(k + "/create", { body: new FormData(n), method: "POST", redirect: "follow" })
+		const t = await fetch("https://usebluecollar.xyz/create", {
+			body: new FormData(n),
+			method: "POST",
+			redirect: "follow",
+		})
 		console.log(t)
 		if (!t.ok) {
 			console.log("oooosss")
@@ -47,4 +51,3 @@ n.addEventListener("submit", async (r) => {
 function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms))
 }
-

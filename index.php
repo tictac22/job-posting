@@ -1,15 +1,16 @@
 <?php 
-
 declare(strict_types=1);
 
 include_once('init.php');
-require_once 'vendor/autoload.php';
+require_once('vendor/autoload.php');
 
 session_start();
 use Core\System\AuthMiddleware;
 
-$uri = '/job-post';
-$_SERVER['REQUEST_URI'] = substr($_SERVER['REQUEST_URI'], (strlen($uri)));
+
+//$uri = '/';
+//$_SERVER['REQUEST_URI'] = substr($_SERVER['REQUEST_URI'], (strlen($uri)));
+
 
 
 $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
@@ -17,12 +18,14 @@ $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
 );
 
 $router = new League\Route\Router;
+
 header("Access-Control-Allow-Origin: *");
 
 $router->map('GET', '/','App\Modules\Home\Controller::home');
 
 $router->map('GET', '/create','App\Modules\Posts\Controller::create')->middleware(new AuthMiddleware);
 $router->map('GET', '/manage','App\Modules\Posts\Controller::manage')->middleware(new AuthMiddleware);
+
 $router->map('GET', '/job/{id:number}','App\Modules\Posts\Controller::getOne');
 $router->map('POST', '/create','App\Modules\Posts\Controller::createPost');
 $router->map('POST', '/delete-post/{id:number}','App\Modules\Posts\Controller::deletePost');

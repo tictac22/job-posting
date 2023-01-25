@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <header class="header">
 	<div class="container">
 		<div class="header__wrapper">
@@ -31,4 +32,39 @@
 			</div>
 		</div>
 	</div>
+=======
+<header class="header">
+	<div class="container">
+		<div class="header__wrapper">
+			<div class="header__logo">
+				<a href={{BASE_URI ~ '/'}}>
+					<img src={{BASE_URI ~ "/assets/images/logo.png"}} alt="logo" />
+				</a>
+			</div>
+			<div class="header__auth auth">
+			{% if user %}
+				<p class="auth__link auth__link--uppercase">WELCOME {{user['name']}}</p>
+				<a class="auth__login" href={{BASE_URI ~ '/manage' }}>
+					<i class="fa-sharp fa-solid fa-gear"></i>
+					<p class=''>Manage listings</p>
+				</a>
+				<div class="auth__login">
+					<i class="fa-solid fa-door-closed"></i>
+					<p class='logout'>Logout</p>
+				</div>
+				
+			{% else %}
+				<a class="auth__link" href={{BASE_URI ~ '/register' }}>
+					<i class="fa-solid fa-user-plus"></i>
+					<p>Sign up</p>
+				</a>
+				<a class="auth__link" href={{BASE_URI ~ '/signin' }}>
+					<i class="fa-solid fa-right-to-bracket"></i>
+					<p>Login</p>
+				</a>
+			{% endif %}
+			</div>
+		</div>
+	</div>
+>>>>>>> 29515bdf7f64e917ea6ece536133c684b155a943
 </header>
