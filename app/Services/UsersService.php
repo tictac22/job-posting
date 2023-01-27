@@ -12,7 +12,7 @@ class UsersService {
 
 	function __construct(private UsersRepository $usersRepository) {}
 
-	function register()
+	function register(mixed $body)
 	{
 		return $this->usersRepository->getAll();
 	}

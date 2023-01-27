@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome');
 
-Route::get("/register", [AuthController::class,"register"]);
+Route::view("/register", 'auth.register');
+
+
+Route::prefix('auth')->controller(AuthController::class)->group(function () {
+
+	Route::post('/register','register');
+});
