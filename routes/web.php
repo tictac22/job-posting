@@ -16,15 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'index');
-Route::view("/register", 'auth.register');
+Route::view('/', 'index')->name('index');
+Route::view("/register", 'auth.register')->name('register');
 Route::view("/login", 'auth.login')->name('login');
-Route::view("/manage", 'manage')->name('manage');
+Route::view("/manage", 'manage')->name('manage')->middleware('auth');
 
 Route::get('/test',function (Request $request){
-	dd(Auth::user());
+	dd(Auth::user()->name);
 });
 Route::prefix('auth')->controller(AuthController::class)->group(function () {
 
 	Route::post('/register','register');
+	Route::post('/logout','logout');
 });

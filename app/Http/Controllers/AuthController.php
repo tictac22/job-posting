@@ -15,6 +15,7 @@ class AuthController extends Controller {
 	 */
 
 	function __construct(private UsersService $usersService) {}
+
 	public function register(Request $request)
 	{	
 		$body = $request->all();
@@ -32,5 +33,13 @@ class AuthController extends Controller {
 		$user = $this->usersService->register($body);
 		Auth::login($user);
 		return redirect('manage');
-	}	
+	}
+	
+	public function logout(Request $request)
+	{	
+		Auth::logout();
+		$request->session()->invalidate();
+		$request->session()->regenerateToken();
+		return redirect('/');
+	} 
 }
