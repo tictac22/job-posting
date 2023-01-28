@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\UsersService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 class AuthController extends Controller {
@@ -29,7 +30,9 @@ class AuthController extends Controller {
 		if($validator->fails()) {
 			return response($validator->errors(),'400');
 		}
-
+		$body['password'] = Hash::make($body['password'], [
+			'rounds' => 12,	
+		]);
 		$user = $this->usersService->register($body);
 		Auth::login($user);
 		return redirect('manage');
