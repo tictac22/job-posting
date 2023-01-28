@@ -26,9 +26,12 @@ form.addEventListener("submit", async (event) => {
 			"X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
 		},
 		credentials: "include",
+		redirect: "follow",
 	})
 	if (!request.ok) {
 		const body = await request.json()
 		console.log(body)
+		return
 	}
+	window.location.href = request.url
 })

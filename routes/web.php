@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
-
+Route::view('/', 'index');
 Route::view("/register", 'auth.register');
+Route::view("/login", 'auth.login')->name('login');
+Route::view("/manage", 'manage')->name('manage');
 
 
 Route::prefix('auth')->controller(AuthController::class)->group(function () {

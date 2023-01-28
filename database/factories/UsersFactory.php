@@ -20,7 +20,8 @@ class UsersFactory extends Factory
     public function definition()
     {
         return [
-            'username' => fake()->unique()->name(),
+            'name' => fake()->name(),
+            'lastname' => fake()->lastName(),
             'email' => fake()->unique()->email(),
             'password' => fake()->password(), // password
 

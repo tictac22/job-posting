@@ -7,7 +7,7 @@
 			<div class="w-[640px]">
 				<div class="bg-white p-10">
 					<div class="text-center">
-						<h1 class="text-xl">Register</h1>
+						<h1 class="text-xl">Login</h1>
 						<p class="text-sm">Register an account to post jobs</p>
 
 					</div>

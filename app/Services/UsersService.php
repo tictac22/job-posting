@@ -4,16 +4,17 @@
 
 namespace App\Services;
 
-use App\Interfaces\UsersRepositoryInterface;
-use App\Repositories\UsersRepository;
+use App\Models\Users;
+use App\Traits\RequestHelper;
 
 class UsersService {
+	use RequestHelper;
 
+	function __construct(private Users $usersModel) {}
 
-	function __construct(private UsersRepository $usersRepository) {}
-
-	function register(mixed $body)
-	{
-		return $this->usersRepository->getAll();
+	function register(array $body)
+	{	
+		$convertedBody = $this->getRequiredFields($body,$this->usersModel->getFillable());
+		return $this->usersModel::create($convertedBody);
 	}
 }
