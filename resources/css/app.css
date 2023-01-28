@@ -8,9 +8,8 @@
 	margin: 0 auto;
 }
 
-
 @layer components {
-  .input-label {
-    @apply transition-all peer-placeholder-shown:left-3 peer-placeholder-shown:top-6 peer-focus:left-0 peer-focus:-top-3.5;
-  }
+	.input-label {
+		@apply transition-all peer-placeholder-shown:left-3 peer-autofill:-top-3.5 peer-placeholder-shown:top-6 peer-focus:left-0 peer-focus:-top-3.5;
+	}
 }
