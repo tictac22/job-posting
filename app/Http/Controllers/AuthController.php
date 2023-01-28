@@ -37,7 +37,25 @@ class AuthController extends Controller {
 		Auth::login($user);
 		return redirect('manage');
 	}
-	
+	public function login(Request $request)
+	{	
+		$body = $request->all();
+
+		$validator = Validator::make($body, [
+            'email' => 'required|email:rfc,dns',
+            'password' => ['required',Password::min(2)->mixedCase()],
+        ]);
+		if($validator->fails()) {
+			return response($validator->errors(),'400');
+		}
+		if (Auth::attempt($validator->validated())) {
+            $request->session()->regenerate();
+            return redirect('manage');
+        }
+		return response([
+			'email' => 'email or password are incorrects'
+		],'400');
+	}
 	public function logout(Request $request)
 	{	
 		Auth::logout();

@@ -14,17 +14,17 @@
 						<form class="form">
 							<div class="relative mt-5">
 								<input id="email" type="text" autocomplete="email" class="w-full mt-4 peer placeholder-transparent field" name="email" placeholder="email">                               
-								<label for="email" class="absolute left-0 -top-3.5 input-label">Email</label>	
+								<label for="email" class="absolute left-0 -top-3.5 input-label">Email</label>
+								<p class="mt-1 text-xs text-red-500 hidden"></p>	
 							</div>
 							<div class="relative mt-5">
 								<input id="password" type="password" class="w-full mt-4 peer placeholder-transparent field" autocomplete="new-password" name="password" placeholder="password">                               
 								<label for="password" class="absolute left-0 -top-3.5 input-label">Password</label>	
+								<p class="mt-1 text-xs text-red-500 hidden"></p>
 							</div>
 							<div class="mt-5">
 								<div class="mt-2 col-md-offset-4">
-									<button type="submit" class="bg-amber-500 w-full text-center p-4 text-white hover:bg-amber-600 transition-colors duration-300 ease-in">
-										Register
-									</button>
+									<x-btn/>
 								</div>
 							</div>
 						</form>
@@ -42,5 +42,5 @@
 @endsection
 
 @section('scripts')
-	@vite('resources/js/register.js')
+	@vite('resources/js/login.js')
 @endsection

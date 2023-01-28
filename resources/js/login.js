@@ -1,19 +1,9 @@
-import { z } from "zod"
 import { HandlerError } from "./utils/CustomErrors.js"
 import { Form } from "./utils/form.js"
 import { baseForm } from "./utils/zod.js"
 const form = document.querySelector(".form")
 
 const schemaForm = baseForm
-	.extend({
-		name: z.string().max(255).min(2, "name at least 2 characters"),
-		lastname: z.string().max(255).min(2, "lastname at least 2 characters"),
-		password_confirmation: z.string(),
-	})
-	.refine((data) => data.password === data.password_confirmation, {
-		message: "Passwords don't match",
-		path: ["password_confirmation"], // path of error
-	})
 const formHandle = new Form(form, schemaForm)
 
 form.addEventListener("submit", async (event) => {
@@ -25,7 +15,7 @@ form.addEventListener("submit", async (event) => {
 	// 	},
 	// })
 	formHandle.sendRequest(async (formFields) => {
-		const request = await fetch("auth/register", {
+		const request = await fetch("auth/login", {
 			body: formFields,
 			method: "POST",
 			headers: {
@@ -37,6 +27,7 @@ form.addEventListener("submit", async (event) => {
 		})
 		if (!request.ok) {
 			const body = await request.json()
+			console.log(body)
 			throw new HandlerError("invalid request", body)
 		}
 		window.location.href = request.url

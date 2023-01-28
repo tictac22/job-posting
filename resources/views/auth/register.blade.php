@@ -40,9 +40,7 @@
 							</div>
 							<div class="mt-5">
 								<div class="mt-2 col-md-offset-4">
-									<button type="submit" class="bg-amber-500 w-full flex items-center justify-center text-center p-4 text-white hover:bg-amber-600 transition-colors duration-300 ease-in">
-										<span class="button-text">Register</span>	<x-spinner/>
-									</button>
+									<x-btn/>
 								</div>
 							</div>
 						
