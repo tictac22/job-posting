@@ -22,6 +22,7 @@ export class Form {
 		}
 	}
 	async sendRequest(cb) {
+		this.clearErrors()
 		try {
 			this.form.querySelector("button").disabled = true
 			this.form.querySelector(".button-text").style.display = "none"
@@ -32,23 +33,41 @@ export class Form {
 			if (error instanceof FormValidaiton) {
 				this.setErrors(error.body)
 			} else {
-				console.log(error.body, "else")
+				this.setBackendErrors(error.body)
 			}
 			this.form.querySelector("button").disabled = false
 			this.form.querySelector(".button-text").style.display = "block"
 			this.form.querySelector(".loader").style.display = "none"
 		}
 	}
-
+	clearErrors() {
+		for (const property in this.getFields()) {
+			const input = this.form.querySelector(`#${property}`)
+			input.classList.remove("input__error")
+			input.nextElementSibling.classList.remove("label__error")
+			input.nextElementSibling.nextElementSibling.classList.remove("text__error")
+		}
+	}
 	setErrors(body) {
+		console.log(body)
 		body.forEach((item) => {
-			console.log(item)
 			const input = this.form.querySelector(`#${item.path[0]}`)
-			input.style.borderColor = "red"
-			input.style.boxShadow = "none"
-			input.nextElementSibling.style.color = "red"
-			input.nextElementSibling.nextElementSibling.style.display = "block"
+			this.addError(input)
+
 			input.nextElementSibling.nextElementSibling.innerText = item.message
 		})
+	}
+	setBackendErrors(body) {
+		for (const key in body) {
+			const input = this.form.querySelector(`#${key}`)
+			this.addError(input)
+
+			input.nextElementSibling.nextElementSibling.innerText = body[key]
+		}
+	}
+	addError(input) {
+		input.classList.add("input__error")
+		input.nextElementSibling.classList.add("label__error")
+		input.nextElementSibling.nextElementSibling.classList.add("text__error")
 	}
 }

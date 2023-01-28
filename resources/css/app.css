@@ -13,3 +13,33 @@
 		@apply transition-all peer-placeholder-shown:left-3 peer-autofill:-top-3.5 peer-placeholder-shown:top-6 peer-focus:left-0 peer-focus:-top-3.5;
 	}
 }
+.loader {
+	width: 20px;
+	height: 20px;
+	border: 3px solid white;
+	display: none;
+	border-bottom-color: transparent;
+	border-radius: 50%;
+	box-sizing: border-box;
+	animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.input__error {
+	border-color: red !important;
+	box-shadow: none !important;
+}
+.label__error {
+	color: red;
+}
+.text__error {
+	display: block;
+}

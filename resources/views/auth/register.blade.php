@@ -15,32 +15,42 @@
 						<form class="form">
 							<div class="relative">
 								<input id="name" type="text" class="w-full mt-4 peer placeholder-transparent field" name="name" placeholder="Name">                               
-								<label for="name" class="absolute left-0 -top-3.5 input-label">Name</label>	
+								<label for="name" class="absolute left-0 -top-3.5 input-label">Name</label>
+								<p class="mt-1 text-xs text-red-500 hidden"></p>
 							</div>
 							<div class="relative mt-5">
 								<input id="lastname" type="text" class="w-full mt-4 peer placeholder-transparent field" name="lastname" placeholder="Lastname">                               
-								<label for="lastname" class="absolute left-0 -top-3.5 input-label">Lastname</label>	
+								<label for="lastname" class="absolute left-0 -top-3.5 input-label">Lastname</label>
+								<p class="mt-1 text-xs text-red-500 hidden"></p>
 							</div>
 							<div class="relative mt-5">
 								<input id="email" type="text" autocomplete="email" class="w-full mt-4 peer placeholder-transparent field" name="email" placeholder="email">                               
-								<label for="email" class="absolute left-0 -top-3.5 input-label">Email</label>	
+								<label for="email" class="absolute left-0 -top-3.5 input-label">Email</label>
+								<p class="mt-1 text-xs text-red-500 hidden"></p>	
 							</div>
 							<div class="relative mt-5">
 								<input id="password" type="password" class="w-full mt-4 peer placeholder-transparent field" autocomplete="new-password" name="password" placeholder="password">                               
-								<label for="password" class="absolute left-0 -top-3.5 input-label">Password</label>	
+								<label for="password" class="absolute left-0 -top-3.5 input-label">Password</label>
+								<p class="mt-1 text-xs text-red-500 hidden"></p>
 							</div>
 							<div class="relative mt-5">
 								<input id="password_confirmation" type="password" class="w-full mt-4 peer placeholder-transparent field" autocomplete="new-password" name="password_confirmation" placeholder="Confirm password">                               
-								<label for="password_confirmation" class="absolute left-0 -top-3.5 input-label">Confirm password</label>	
+								<label for="password_confirmation" class="absolute left-0 -top-3.5 input-label">Confirm password</label>
+								<p class="mt-1 text-xs text-red-500 hidden"></p>
 							</div>
 							<div class="mt-5">
 								<div class="mt-2 col-md-offset-4">
-									<button type="submit" class="bg-amber-500 w-full text-center p-4 text-white hover:bg-amber-600 transition-colors duration-300 ease-in">
-										Register
+									<button type="submit" class="bg-amber-500 w-full flex items-center justify-center text-center p-4 text-white hover:bg-amber-600 transition-colors duration-300 ease-in">
+										<span class="button-text">Register</span>	<x-spinner/>
 									</button>
 								</div>
 							</div>
+						
 						</form>
+					</div>
+					<div class="flex items-center mt-2">
+						<p>Already have an account?</p>
+						<a href="/login" class="text-blue-300 underline cursor-pointer ml-3">Login</a>
 					</div>
 				</div>
 			</div>

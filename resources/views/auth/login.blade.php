@@ -8,19 +8,10 @@
 				<div class="bg-white p-10">
 					<div class="text-center">
 						<h1 class="text-xl">Login</h1>
-						<p class="text-sm">Register an account to post jobs</p>
-
+						<p class="text-sm">Log in your account to post jobs</p>
 					</div>
 					<div class="mt-5">
 						<form class="form">
-							<div class="relative">
-								<input id="name" type="text" class="w-full mt-4 peer placeholder-transparent field" name="name" placeholder="Name">                               
-								<label for="name" class="absolute left-0 -top-3.5 input-label">Name</label>	
-							</div>
-							<div class="relative mt-5">
-								<input id="lastname" type="text" class="w-full mt-4 peer placeholder-transparent field" name="lastname" placeholder="Lastname">                               
-								<label for="lastname" class="absolute left-0 -top-3.5 input-label">Lastname</label>	
-							</div>
 							<div class="relative mt-5">
 								<input id="email" type="text" autocomplete="email" class="w-full mt-4 peer placeholder-transparent field" name="email" placeholder="email">                               
 								<label for="email" class="absolute left-0 -top-3.5 input-label">Email</label>	
@@ -28,10 +19,6 @@
 							<div class="relative mt-5">
 								<input id="password" type="password" class="w-full mt-4 peer placeholder-transparent field" autocomplete="new-password" name="password" placeholder="password">                               
 								<label for="password" class="absolute left-0 -top-3.5 input-label">Password</label>	
-							</div>
-							<div class="relative mt-5">
-								<input id="password_confirmation" type="password" class="w-full mt-4 peer placeholder-transparent field" autocomplete="new-password" name="password_confirmation" placeholder="Confirm password">                               
-								<label for="password_confirmation" class="absolute left-0 -top-3.5 input-label">Confirm password</label>	
 							</div>
 							<div class="mt-5">
 								<div class="mt-2 col-md-offset-4">
@@ -41,6 +28,10 @@
 								</div>
 							</div>
 						</form>
+					</div>
+					<div class="flex items-center mt-2">
+						<p>Don't have an account?</p>
+						<a href="/register" class="text-blue-300 underline cursor-pointer ml-3">Register</a>
 					</div>
 				</div>
 			</div>
