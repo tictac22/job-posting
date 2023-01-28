@@ -4,13 +4,13 @@
 
 namespace App\Services;
 
-use App\Models\Users;
+use App\Models\User;
 use App\Traits\RequestHelper;
 
 class UsersService {
 	use RequestHelper;
 
-	function __construct(private Users $usersModel) {}
+	function __construct(private User $usersModel) {}
 
 	function register(array $body)
 	{	

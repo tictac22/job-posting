@@ -18,11 +18,10 @@ class AuthController extends Controller {
 	public function register(Request $request)
 	{	
 		$body = $request->all();
-
 		$validator = Validator::make($body, [
             'name' => 'required|max:255|min:2',
 			'lastname' => 'required|max:255|min:2',
-            'email' => 'required|email:rfc,dns|unique:users',
+            'email' => 'required|email:rfc,dns|unique:user',
             'password' => ['required',Password::min(2)->mixedCase(), 'confirmed'],
 			'password_confirmation' => 'same:password'
         ]);

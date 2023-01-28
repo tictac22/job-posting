@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +21,9 @@ Route::view("/register", 'auth.register');
 Route::view("/login", 'auth.login')->name('login');
 Route::view("/manage", 'manage')->name('manage');
 
-
+Route::get('/test',function (Request $request){
+	dd(Auth::user());
+});
 Route::prefix('auth')->controller(AuthController::class)->group(function () {
 
 	Route::post('/register','register');
