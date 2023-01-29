@@ -7,7 +7,7 @@ namespace App\Services;
 use App\Models\User;
 use App\Traits\RequestHelper;
 
-class UsersService {
+class AuthService {
 	use RequestHelper;
 
 	function __construct(private User $usersModel) {}

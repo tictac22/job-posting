@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\UsersService;
+use App\Services\AuthService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +15,7 @@ class AuthController extends Controller {
 	 * @return \Illuminate\View\View
 	 */
 
-	function __construct(private UsersService $usersService) {}
+	function __construct(private AuthService $authService) {}
 
 	public function register(Request $request)
 	{	
@@ -33,7 +33,7 @@ class AuthController extends Controller {
 		$body['password'] = Hash::make($body['password'], [
 			'rounds' => 12,	
 		]);
-		$user = $this->usersService->register($body);
+		$user = $this->authService->register($body);
 		Auth::login($user);
 		return redirect('manage');
 	}
