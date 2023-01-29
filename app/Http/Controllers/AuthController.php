@@ -34,7 +34,7 @@ class AuthController extends Controller {
 			'rounds' => 12,	
 		]);
 		$user = $this->authService->register($body);
-		Auth::login($user);
+		Auth::login($user,$remember = true);
 		return redirect('manage');
 	}
 	public function login(Request $request)
@@ -48,7 +48,7 @@ class AuthController extends Controller {
 		if($validator->fails()) {
 			return response($validator->errors(),'400');
 		}
-		if (Auth::attempt($validator->validated())) {
+		if (Auth::attempt($validator->validated(),$remember = true)) {
             $request->session()->regenerate();
             return redirect('manage');
         }

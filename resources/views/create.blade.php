@@ -6,12 +6,11 @@
 		<div class="container">
 			<div class="flex justify-center">
 				<div class="w-[640px]">
-					<div class="bg-white p-10">
+					<div class="bg-white p-10 my-5">
 						<div class="text-center">
 							<h1 class="text-xl">Create</h1>
 							<p class="text-sm">Create a post to find a developer</p>
 						</div>
-						<div class="mt-5">
 							<form class="form">
 								<div class="relative mt-5">
 									<input id="company_name" type="text" class="w-full mt-4 peer placeholder-transparent field" name="company_name" placeholder="Company name">                               
@@ -50,7 +49,6 @@
 									</div>
 								</div>
 							</form>
-						</div>
 						
 					</div>
 				</div>

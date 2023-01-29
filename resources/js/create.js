@@ -11,7 +11,7 @@ const schemaForm2 = z.object({
 	description: z.string().max(255).min(2, "lastname at least 2 characters"),
 })
 const schemaForm = z.object({})
-const formHandle = new Form(form, schemaForm)
+const formHandle = new Form(form, schemaForm2)
 
 form.addEventListener("submit", async (event) => {
 	event.preventDefault()
@@ -31,31 +31,6 @@ form.addEventListener("submit", async (event) => {
 		}
 		window.location.href = request.url
 	})
-
-	// await fetch("sanctum/csrf-cookie", {
-	// 	credentials: "include",
-	// 	headers: {
-	// 		"X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
-	// 	},
-	// })
-	// formHandle.sendRequest(async (formFields) => {
-	// 	const request = await fetch("auth/login", {
-	// 		body: formFields,
-	// 		method: "POST",
-	// 		headers: {
-	// 			"Content-Type": "application/json",
-	// 			"X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
-	// 		},
-	// 		credentials: "include",
-	// 		redirect: "follow",
-	// 	})
-	// 	if (!request.ok) {
-	// 		const body = await request.json()
-	// 		console.log(body)
-	// 		throw new HandlerError("invalid request", body)
-	// 	}
-	// 	window.location.href = request.url
-	// })
 })
 
 form.querySelector("textarea").onkeyup = function (event) {
