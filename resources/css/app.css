@@ -36,6 +36,7 @@
 .input__error {
 	border-color: red !important;
 	box-shadow: none !important;
+	outline-color: red !important;
 }
 .label__error {
 	color: red;
@@ -49,4 +50,11 @@ input[type="file"]:focus {
 	outline-color: #2563eb;
 	outline-width: 1px;
 	outline-style: solid;
+}
+input:focus.input__error,
+textarea:focus.input__error {
+	outline-offset: 0px;
+	outline-width: 1px;
+}
+input[type="file"].input__error {
 }

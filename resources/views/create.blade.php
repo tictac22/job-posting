@@ -34,13 +34,15 @@
 									<p class="mt-1 text-xs text-red-500 hidden"></p>
 								</div>
 								<div class="relative mt-5">
-									<input id="logo" type="file" accept="image/png, image/jpeg"  name="logo"  class="border border-solid py-2 px-3 focus:border-[#2563eb] border-[#6b7280] w-full mt-4 peer placeholder-transparent field" placeholder="Company logo"></input>
+									<input id="logo" type="file" accept="image/png, image/jpeg, image/jpg"  name="logo"  class="border border-solid py-2 px-3 focus:border-[#2563eb] border-[#6b7280] w-full mt-4 peer placeholder-transparent field" placeholder="Company logo"></input>
 									<label for="logo" class="absolute left-0 -top-3.5 input-label">Company logo</label>
+									<p class="mt-1 text-xs text-red-500 hidden"></p>
 								</div>
 								<div class="relative mt-5">
 									<textarea id="description" name="description" maxlength="255"  class="resize-none min-h-[175px] w-full mt-4 peer placeholder-transparent field" placeholder="Job description"></textarea>
 									<label for="description" class="absolute left-0 -top-3.5 input-label">Job description</label>
-									<span class="absolute right-6 bottom-3 text-[10px]">255 characters left</span>
+									<p class="mt-1 text-xs text-red-500 hidden"></p>
+									<span data-attr="hint" class="absolute right-6 bottom-3 text-[10px]">255 characters left</span>
 								</div>
 								<div class="mt-5">
 									<div class="mt-2 col-md-offset-4">
