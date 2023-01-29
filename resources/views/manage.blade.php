@@ -1,10 +1,9 @@
 @extends('layouts.app')
 @section("title","Manage")
 @section('content')
-<div>
+<main>
 	<div>private page</div>
-	
-</div>
+</main>
 @endsection
 
 @section('scripts')

@@ -13,9 +13,7 @@
 	<body class="antialiased bg-[#f4f9e2] font-mono">
 		<div class="flex min-h-screen flex-col relative">
 			@include('layouts.header')
-			<main class="flex-grow flex flex-col justify-center">
-				@yield('content')
-			</main>
+			@yield('content')
 			<footer>footer</footer>
 		</div>
 		@yield("scripts")
