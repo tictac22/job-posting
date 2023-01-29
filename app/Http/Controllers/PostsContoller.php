@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\PostsService;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Validator;
 
 class PostsContoller extends Controller {
 
-
+	function __construct(private PostsService $postsService){}
 	public function create(Request $request)
 	{
 		$body = $request->all();
@@ -22,9 +23,11 @@ class PostsContoller extends Controller {
         ],[
 			'logo.max' => "image should be less than 12mb"
 		]);
+
 		if($validator->fails()) {
 			return response($validator->errors(),'400');
 		}
-		dd($validator);
+		$post = $this->postsService->createPost($body);
+		return redirect('/job/'. $post['id']);
 	}
 }

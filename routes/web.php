@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostsContoller;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'index')->name('index');
 Route::view("/register", 'auth.register')->name('register');
 Route::view("/login", 'auth.login')->name('login');
+Route::get("/job/{id}",function (Request $request, $id) {
+	return 'User '.$id;
+})->where('id', '[0-9]+')->name('job');
 
 Route::middleware('auth')->group(function() {
 

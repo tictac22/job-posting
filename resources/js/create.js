@@ -10,7 +10,8 @@ const schemaForm2 = z.object({
 	logo: z.string().min(10, "expected image"),
 	description: z.string().max(255).min(2, "lastname at least 2 characters"),
 })
-const formHandle = new Form(form, schemaForm2)
+const schemaForm = z.object({})
+const formHandle = new Form(form, schemaForm)
 
 form.addEventListener("submit", async (event) => {
 	event.preventDefault()
@@ -28,6 +29,7 @@ form.addEventListener("submit", async (event) => {
 			console.log(body)
 			throw new HandlerError("invalid request", body)
 		}
+		window.location.href = request.url
 	})
 
 	// await fetch("sanctum/csrf-cookie", {
