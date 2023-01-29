@@ -11,4 +11,9 @@ class User extends Authenticatable
 	protected $primaryKey = 'user_id';
 	protected $table = 'user';
 	protected $fillable = ['name','lastname','email','password'];
+
+	public function posts()
+	{
+		return $this->hasMany(Posts::class);
+	}
 }

@@ -14,7 +14,7 @@
 		<div class="flex min-h-screen flex-col relative">
 			@include('layouts.header')
 			@yield('content')
-			<footer>footer</footer>
+			<footer class="bg-cyan-400 text-white p-4 text-center"><p>Copyright© 2022, All rights reserved</p></footer>
 		</div>
 		@yield("scripts")
 	</body>

@@ -43,3 +43,10 @@
 .text__error {
 	display: block;
 }
+input[type="file"]:focus {
+	/* border-color: #2563eb !important; */
+	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+	outline-color: #2563eb;
+	outline-width: 1px;
+	outline-style: solid;
+}
