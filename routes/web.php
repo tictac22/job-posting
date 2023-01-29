@@ -19,9 +19,6 @@ use Illuminate\Http\Request;
 Route::view('/', 'index')->name('index');
 Route::view("/register", 'auth.register')->name('register');
 Route::view("/login", 'auth.login')->name('login');
-Route::get("/job/{id}",function (Request $request, $id) {
-	return 'User '.$id;
-})->where('id', '[0-9]+')->name('job');
 
 Route::middleware('auth')->group(function() {
 
@@ -32,8 +29,9 @@ Route::middleware('auth')->group(function() {
 
 Route::controller(PostsContoller::class)->group(function () {
 
-	Route::post('/create','create');
-})->middleware('auth');
+	Route::get('/job/{id}','getOne')->where('id', '[0-9]+')->name('job');
+	Route::post('/create','create')->middleware('auth');
+});
 
 Route::prefix('auth')->controller(AuthController::class)->group(function () {
 

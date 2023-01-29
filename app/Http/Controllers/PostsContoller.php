@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Validator;
 class PostsContoller extends Controller {
 
 	function __construct(private PostsService $postsService){}
+	public function getOne(Request $request, $id) {
+		$post = $this->postsService->getPost((int)$id);
+		return view('job',['post' => $post]);
+	}
 	public function create(Request $request)
 	{
 		$body = $request->all();

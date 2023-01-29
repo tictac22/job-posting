@@ -10,7 +10,10 @@ class PostsService {
 	use RequestHelper;
 
 	function __construct(private Posts $postsModule, private FileService $fileService){}
-
+	public function getPost(int $id)
+	{
+		return $this->postsModule::findOrFail($id);
+	}
 	public function createPost(array $body)
 	{	
 		$imageurl = $this->fileService->upload($body['logo']);
