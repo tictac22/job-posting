@@ -25,7 +25,7 @@
 								</div>
 								<div class="mt-5">
 									<div class="mt-2 col-md-offset-4">
-										<x-btn/>
+										<x-btn>Login</x-btn>
 									</div>
 								</div>
 							</form>

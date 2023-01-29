@@ -38,21 +38,18 @@
 									<label for="logo" class="absolute left-0 -top-3.5 input-label">Company logo</label>
 								</div>
 								<div class="relative mt-5">
-									<textarea id="description" name="description" maxlength="255"  class="min-h-[175px] w-full mt-4 peer placeholder-transparent field" placeholder="Job description"></textarea>
+									<textarea id="description" name="description" maxlength="255"  class="resize-none min-h-[175px] w-full mt-4 peer placeholder-transparent field" placeholder="Job description"></textarea>
 									<label for="description" class="absolute left-0 -top-3.5 input-label">Job description</label>
 									<span class="absolute right-6 bottom-3 text-[10px]">255 characters left</span>
 								</div>
 								<div class="mt-5">
 									<div class="mt-2 col-md-offset-4">
-										<x-btn/>
+										<x-btn>Post</x-btn>
 									</div>
 								</div>
 							</form>
 						</div>
-						<div class="flex items-center mt-2">
-							<p>Don't have an account?</p>
-							<a href="/register" class="text-blue-300 underline cursor-pointer ml-3">Register</a>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -63,5 +60,5 @@
 @endsection
 
 @section('scripts')
-	<!-- @vite('resources/js/register.js') -->
+	@vite('resources/js/create.js')
 @endsection

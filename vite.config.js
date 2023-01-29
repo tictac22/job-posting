@@ -9,6 +9,7 @@ export default defineConfig({
 				"resources/js/app.js",
 				"resources/js/register.js",
 				"resources/js/login.js",
+				"resources/js/create.js",
 				"resources/css/fontawesome.min.css",
 				"resources/css/solid.min.css",
 			],

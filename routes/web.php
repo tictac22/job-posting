@@ -1,8 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PostsContoller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +26,11 @@ Route::middleware('auth')->group(function() {
 	
 });
 
-Route::get('/test',function (Request $request){
-	dd(Auth::user()->name);
-});
+Route::controller(PostsContoller::class)->group(function () {
+
+	Route::post('/create','create');
+})->middleware('auth');
+
 Route::prefix('auth')->controller(AuthController::class)->group(function () {
 
 	Route::post('/register','register');
