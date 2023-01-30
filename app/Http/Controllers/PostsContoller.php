@@ -19,8 +19,13 @@ class PostsContoller extends Controller {
 
 	public function index(Request $request)
 	{	
-		$posts = $this->postsService->getAll();
-		return view('index',['posts'=> $posts]);
+		$filters = request(['tag','search']);
+		$hasParams = false;
+		if(count($filters) > 0) {
+			$hasParams = true;
+		}
+		$posts = $this->postsService->getAll($filters);
+		return view('index',['posts'=> $posts,'hasParams' => $hasParams]);
 	}
 	public function getPostForm(Request $request, $id)
 	{

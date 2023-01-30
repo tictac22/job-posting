@@ -13,12 +13,14 @@ class PostsService {
 	use RequestHelper;
 	use ParseTags;
 	function __construct(private Posts $postsModule, private FileService $fileService){}
-	public function getAll()
+	public function getAll(array $filters)
 	{
 		$posts = $this->postsModule::query();
-		$filters = request(['tag','search']);
 		if(array_key_exists('tag',$filters)) {
 			$posts->where('tags','LIKE','%'. strtolower($filters['tag']).'%');
+		}
+		if(array_key_exists('search',$filters)) {
+			$posts->orWhere('job_title','LIKE','%'. strtolower($filters['search']).'%');
 		}
 		$filteredPosts = $posts->get();
 		foreach($filteredPosts as &$post) {

@@ -23,6 +23,27 @@
 			</div>
 		</div>
 	</div>
+	<div class="mt-3">
+		<div class="container">
+			@if($hasParams)
+				<div class="text-right my-1 flex items-center justify-end">
+					<a class="text-right ml-1 hover:underline" href="{{ request()->url() }}">
+					<i class="fa-solid fa-xmark"></i>
+						<span>Clear Parameters</span>
+					</a>
+				</div>
+			@endif
+			<form method="GET" id="form__search">
+				<div class="flex items-center">
+					<div class="relative flex-1 p-2">
+						<i class="fa-solid fa-magnifying-glass relative z-10"></i>
+						<input id="input__search" name="search" value="{{request()->get('search')}}" placeholder="search" class="absolute inset-0 pl-8 focus:outline-amber-500 outline-none outline-offset-0"/>
+					</div>
+					<button type="submit" class="bg-[#62d0df] p-2 ml-1 cursor-pointer hover:bg-[#59becb] text-white">Search</button>
+				</div>
+			</form>
+		</div>
+	</div>
 	<div>
 		<div class="container">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -37,7 +58,7 @@
 							<ul class="mt-1">
 								@foreach ($post->tags as $tag)
 									<li class="text-white bg-black p-2 inline-block lowercase rounded-lg">
-										<a href="?tag={{$tag}}">{{$tag}}</a>
+										<a class="tags" href="?tag={{$tag}}">{{$tag}}</a>
 									</li>
 								@endforeach
 								
@@ -54,4 +75,8 @@
 		</div>
 	</div>
 </main>
+@endsection
+
+@section('scripts')
+	@vite('resources/js/index.js')
 @endsection
