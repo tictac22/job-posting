@@ -1,7 +1,7 @@
 import.meta.glob(["../images/**", "../fonts/**"])
 
 document.querySelector(".logout")?.addEventListener("click", async () => {
-	const request = await fetch("auth/logout", {
+	const request = await fetch("/auth/logout", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

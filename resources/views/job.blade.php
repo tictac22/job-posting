@@ -12,7 +12,15 @@
 
 @section('content')
 <main class="flex-grow flex flex-col justify-center">
-	<div class="flex items-center bg-white mt-20 py-4 text-center">
+	@if($creator)
+	<div class="flex justify-end ml-auto mr-0 mb-4">
+		<div class="container">
+			<p>Last update at {{$post->updated_at_parse }}</p>
+			<a class="text-gray-400 hover:underline cursor-pointer" href="/edit/{{$post->id}}">Edit post</a>
+		</div>
+	</div>
+	@endif
+	<div class="flex items-center bg-white py-4 text-center">
 		<div class="container">
 			<div class="w-48 hidden md:block m-auto">
 				<img class="w-full" src="{{$post->logo}}" alt="{{$post->company_name}}"/>
@@ -23,7 +31,7 @@
 				<ul class="mt-3">
 					@foreach ($post->tags as $tag)
 						<li class="text-white bg-black p-2 inline-block lowercase rounded-lg">
-							<a href="?tag=react">{{$tag}}</a>
+							{{$tag}}
 						</li>
 					@endforeach
 				</ul>

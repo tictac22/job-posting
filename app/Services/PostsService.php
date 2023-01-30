@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class PostsService {
 	use RequestHelper;
-
 	function __construct(private Posts $postsModule, private FileService $fileService){}
 	public function getPost(int $id)
 	{
