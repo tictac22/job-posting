@@ -24,7 +24,8 @@ class PostsContoller extends Controller {
 	public function getOne(Request $request, $id) 
 	{
 		$post = $this->postsService->getPost((int)$id);
-
+		$tags = explode(',',$post->tags);
+		$post['tags'] = $tags;
 		$creator = false;
 		if (Gate::allows('update-post', $post)) {
 			$creator = true;

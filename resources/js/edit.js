@@ -46,3 +46,11 @@ form.querySelector("textarea").onkeyup = function (event) {
 		button.disabled = false
 	}
 }
+
+document.querySelector("#logo").onchange = (evt) => {
+	const [file] = evt.target.files
+	if (file) {
+		imagePreview.src = URL.createObjectURL(file)
+		imagePreview.style.display = "block"
+	}
+}

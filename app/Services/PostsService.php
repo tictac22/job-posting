@@ -12,8 +12,6 @@ class PostsService {
 	public function getPost(int $id)
 	{
 		$post =  $this->postsModule::findOrFail($id);
-		$tags = explode(',',$post->tags);
-		$post['tags'] = $tags;
 		return $post;
 	}
 	public function getUsersPosts(int $id)

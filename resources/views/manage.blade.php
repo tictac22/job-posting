@@ -18,7 +18,7 @@
 		<div class="mt-4">
 			@forelse($posts as $post)
 				<div class="items-start  flex-col sm:flex-row flex sm:items-center border-t border-solid border-gray-500 py-4 justify-between gap-4">
-					<p class="text-left sm:overflow-hidden sm:whitespace-nowrap sm:text-ellipsis sm:max-w-[80%]">{{$post->job_title}}</p>
+					<a href="/job/{{$post->id}}" class="text-left underline sm:overflow-hidden sm:whitespace-nowrap sm:text-ellipsis sm:max-w-[80%]">{{$post->job_title}}</a>
 					<div class="flex items-center sm:ml-4">
 						<a href="/edit/{{$post->id}}" class="text-cyan-500 hover:underline cursor-pointer flex items-center">
 							<span class="mr-3">Edit</span>
