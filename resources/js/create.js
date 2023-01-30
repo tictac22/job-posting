@@ -7,7 +7,10 @@ const schemaForm2 = z.object({
 	job_title: z.string().max(255).min(2, "lastname at least 2 characters"),
 	location: z.string().max(255).min(2, "lastname at least 2 characters"),
 	tags: z.string().max(255).min(2, "lastname at least 2 characters"),
-	logo: z.string().min(10, "expected image"),
+	logo: z.any().refine((val) => {
+		if (!val) return false
+		return true
+	}, "Logo is required"),
 	description: z.string().max(255).min(2, "lastname at least 2 characters"),
 })
 const schemaForm = z.object({})
