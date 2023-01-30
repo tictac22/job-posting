@@ -22,13 +22,12 @@ Route::view("/login", 'auth.login')->name('login');
 
 Route::middleware('auth')->group(function() {
 
-	Route::view("/manage", 'manage')->name('manage');
-	Route::view("/create", 'create')->name('create');
-	
+	Route::view("/create", 'create')->name('create');	
 });
 
 Route::controller(PostsContoller::class)->group(function () {
 
+	Route::get('/manage','getUsersPost')->middleware('auth')->name('manage');
 	Route::get('/job/{id}','getOne')->where('id', '[0-9]+')->name('job');
 	Route::post('/create','create')->middleware('auth');
 });

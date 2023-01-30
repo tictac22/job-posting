@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\PostsService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Validator;
@@ -14,13 +15,18 @@ class PostsContoller extends Controller {
 	function __construct(private PostsService $postsService){}
 	public function getOne(Request $request, $id) {
 		$post = $this->postsService->getPost((int)$id);
-		
+
 		$creator = false;
 		if (Gate::allows('update-post', $post)) {
 			$creator = true;
 		}
 		$post['updated_at_parse'] = Carbon::parse($post->updated_at)->format('d/m/Y');
 		return view('job',['post' => $post,'creator' => $creator]);
+	}
+	public function getUsersPost(Request $request)
+	{	
+		$posts = $this->postsService->getUsersPosts((int)Auth::id());
+		return view('manage',['posts' => $posts]);
 	}
 	public function create(Request $request)
 	{

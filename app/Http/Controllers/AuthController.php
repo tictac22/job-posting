@@ -37,6 +37,7 @@ class AuthController extends Controller {
 		Auth::login($user,$remember = true);
 		return redirect('manage');
 	}
+
 	public function login(Request $request)
 	{	
 		$body = $request->all();
@@ -56,6 +57,7 @@ class AuthController extends Controller {
 			'email' => 'email or password are incorrects'
 		],'400');
 	}
+	
 	public function logout(Request $request)
 	{	
 		Auth::logout();

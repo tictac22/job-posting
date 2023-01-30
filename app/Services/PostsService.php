@@ -16,6 +16,10 @@ class PostsService {
 		$post['tags'] = $tags;
 		return $post;
 	}
+	public function getUsersPosts(int $id)
+	{
+		return $this->postsModule::select('job_title','id')->where('user_id',$id)->get();
+	}
 	public function createPost(array $body)
 	{	
 		$imageurl = $this->fileService->upload($body['logo']);
