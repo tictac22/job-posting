@@ -14,7 +14,7 @@
 <main class="flex-1">
 	<div class="container">
 		<h1 class="text-3xl font-bold">Manage jobs</h1>
-		<a href="/create" class="text-purple-700 hover:underline block mt-2 text-xl">Create new one</a>
+		<a href="/create" class="text-purple-700 hover:underline inline-block mt-2 text-xl">Create new one</a>
 		<div class="mt-4">
 			@forelse($posts as $post)
 				<div class="items-start  flex-col sm:flex-row flex sm:items-center border-t border-solid border-gray-500 py-4 justify-between gap-4">
