@@ -1,6 +1,7 @@
 <title>@yield('title')</title>
 
 <meta name="description" content="Find your dream job here" />
+<meta name="apple-mobile-web-app-title" content="$title" />
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="{{$title}}" />
