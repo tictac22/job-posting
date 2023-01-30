@@ -12,26 +12,29 @@ const schemaForm2 = z.object({
 	}, "Logo is required"),
 	description: z.string().max(255).min(2, "lastname at least 2 characters"),
 })
-const schemaForm = z.object({})
 const formHandle = new Form(form, schemaForm2)
 
 form.addEventListener("submit", async (event) => {
 	event.preventDefault()
-
+	const formData = new FormData(form)
+	if (formData.get("logo").size === 0) {
+		formData.set("logo", form.querySelector("#logo").getAttribute("data-value"))
+	}
+	formData.append("postId", getIdFromUrl())
 	formHandle.sendRequest(async (data) => {
-		// const request = await fetch("/create", {
-		// 	method: "POST",
-		// 	body: new FormData(form),
-		// 	headers: {
-		// 		"X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
-		// 	},
-		// })
-		// if (!request.ok) {
-		// 	const body = await request.json()
-		// 	console.log(body)
-		// 	throw new HandlerError("invalid request", body)
-		// }
-		// window.location.href = request.url
+		const request = await fetch("/edit", {
+			method: "POST",
+			body: formData,
+			headers: {
+				"X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+			},
+		})
+		if (!request.ok) {
+			const body = await request.json()
+			console.log(body)
+			throw new HandlerError("invalid request", body)
+		}
+		window.location.href = request.url
 	})
 })
 
@@ -63,3 +66,8 @@ document.querySelector("#logoLabel").addEventListener("keypress", (event) => {
 		event.target.click()
 	}
 })
+
+function getIdFromUrl() {
+	let url = new URL(window.location.href)
+	return url.pathname.split("/").at(-1)
+}

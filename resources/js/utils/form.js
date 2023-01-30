@@ -11,8 +11,6 @@ export class Form {
 		fields.map((item) => {
 			if (item?.files) {
 				inputs[item.name] = item.files[0] ?? item.dataset.value
-				console.log(item.files[0], item.dataset.value, item.files[0] ?? item.dataset.value)
-				console.log(inputs)
 			} else {
 				inputs[item.name] = item.value
 			}

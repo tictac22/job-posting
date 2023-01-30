@@ -1,10 +1,12 @@
 <?php 
 
 namespace App\Services;
+use Illuminate\Validation\Rules\File;
 
 use App\Models\Posts;
 use App\Traits\RequestHelper;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PostsService {
 	use RequestHelper;
@@ -29,4 +31,19 @@ class PostsService {
 		return $this->postsModule::create($convertedBody);
 
 	}
+	public function editPost(array $body)
+	{	
+		$post = $this->postsModule::find($body['postId']);
+		if($body['isImage']) {
+			$body['logo'] = $this->fileService->delete($post->logo,$body['logo']);
+		}
+
+		$convertedBody = $this->getRequiredFields($body,$this->postsModule->getFillable());
+		$convertedBody['user_id'] = Auth::id();
+		
+		$post->update($convertedBody);
+		return $this->postsModule::create($convertedBody);
+
+	}
+	
 }

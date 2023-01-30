@@ -32,6 +32,7 @@ Route::controller(PostsContoller::class)->group(function () {
 	
 	Route::get('/edit/{id}','getPostForm')->where('id', '[0-9]+')->name('job');
 	Route::post('/create','create')->middleware('auth');
+	Route::post('/edit','edit')->middleware('auth');
 });
 
 Route::prefix('auth')->controller(AuthController::class)->group(function () {

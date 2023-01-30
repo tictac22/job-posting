@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\FileService;
 use App\Services\PostsService;
+use App\Traits\Url;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Validator;
 class PostsContoller extends Controller {
-
+	use Url;
 	function __construct(private PostsService $postsService,private FileService $fileService){}
 	public function getPostForm(Request $request, $id)
 	{
@@ -59,5 +60,41 @@ class PostsContoller extends Controller {
 		}
 		$post = $this->postsService->createPost($body);
 		return redirect('/job/'. $post['id']);
+	}
+	public function edit(Request $request)
+	{
+		$body = $request->all();
+		$validator = Validator::make($body, [
+			'company_name' => 'required|max:255|min:5',
+            'job_title' => 'required|max:255|min:5',
+			'location' => 'required|max:255|min:5',
+			'postId' => 'required|numeric',
+			'tags' => 'required|max:255|min:5',
+			'logo' => ['required'],
+			'description' => 'required|max:255|min:10',
+        ],[
+			'logo.max' => "image should be less than 12mb"
+		]);
+		if($validator->fails()) {
+			return response($validator->errors(),'400');
+		}
+
+		$image = $body['logo'];
+
+		$isImage = Validator::make(['logo' => $image],[
+			'logo' => File::types(['jpg','png','jpeg'])->max(12 * 1024),
+		]);
+		if(!$this->validUrl($image) && $isImage->fails()) {
+			return response($isImage->errors(),'400');
+		}
+
+		$body['isImage'] = false;
+		if($isImage->valid()){
+			$body['isImage'] = true;
+		}
+
+		$this->postsService->editPost($body);
+		return redirect('/job/'. $body['postId']);
+
 	}
 }

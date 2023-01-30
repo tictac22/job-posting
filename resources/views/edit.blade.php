@@ -15,6 +15,12 @@
 <main class="flex-grow flex flex-col justify-center">
 	<div>
 		<div class="container">
+			<div class="flex justify-end ">
+				<a href="/manage" class="flex items-center p-1 bg-amber-600 rounded text-white">
+					<span class="mr-2">Back to manage</span>
+					<i class="fa-solid fa-arrow-right"></i>
+					</a>
+			</div>
 			<div class="flex justify-center">
 				<div class="w-[640px]">
 					<div class="bg-white p-10 my-5">
