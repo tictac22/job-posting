@@ -10,10 +10,10 @@ export class Form {
 		const fields = [...this.form.querySelectorAll(".field")]
 		fields.map((item) => {
 			if (item?.files) {
-				inputs[item.name] = item.files[0]
+				inputs[item.name] = item.files[0] ?? item.dataset.value
 			} else {
+				inputs[item.name] = item.value
 			}
-			inputs[item.name] = item.value
 		})
 		return inputs
 	}

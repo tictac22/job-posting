@@ -43,12 +43,12 @@
 								<label for="password" class="absolute left-0 -top-3.5 input-label">Tags(Comma Separated)</label>	
 								<p class="mt-1 text-xs text-red-500 hidden"></p>
 							</div>
-							<div class="relative mt-5">
-								<input id="logo" type="file" accept="image/png, image/jpeg, image/jpg"  name="logo"  class="border border-solid py-2 px-3 focus:border-[#2563eb] border-[#6b7280] w-full mt-4 peer placeholder-transparent field" placeholder="Company logo"></input>
-								<label for="logo" class="absolute left-0 -top-3.5 input-label">Company logo</label>
+							<div class="relative mt-8">
+								<input  data-value="{{$post->logo}}" id="logo" type="file" accept="image/png, image/jpeg, image/jpg"  name="logo"  class="hidden border border-solid py-2 px-3 focus:border-[#2563eb] border-[#6b7280] w-full mt-4 peer placeholder-transparent field" placeholder="Company logo"></input>
+								<label id="logoLabel" for="logo" tabindex="0" class=" focus-visible:outline-indigo-500 absolute left-0 -top-3.5 input-label p-3  rounded bg-amber-500 text-white hover:bg-amber-600 transition-colors cursor-pointer">Select another logo</label>
 								<p class="mt-1 text-xs text-red-500 hidden"></p>
 							</div>
-							<div class="reltaive mt-5 flex items-center justify-center">
+							<div class="reltaive mt-20  flex items-center justify-center">
 								<img id="imagePreview"class="w-60 h-60 object-cover"  src="{{$post->logo}}" alt="preview of image" />
 							</div>
 							<div class="relative mt-5">

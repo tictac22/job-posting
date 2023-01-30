@@ -1,5 +1,4 @@
 import { z } from "zod"
-import { HandlerError } from "./utils/CustomErrors.js"
 import { Form } from "./utils/form.js"
 const form = document.querySelector(".form")
 const schemaForm2 = z.object({
@@ -17,19 +16,19 @@ form.addEventListener("submit", async (event) => {
 	event.preventDefault()
 
 	formHandle.sendRequest(async (data) => {
-		const request = await fetch("/create", {
-			method: "POST",
-			body: new FormData(form),
-			headers: {
-				"X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
-			},
-		})
-		if (!request.ok) {
-			const body = await request.json()
-			console.log(body)
-			throw new HandlerError("invalid request", body)
-		}
-		window.location.href = request.url
+		// const request = await fetch("/create", {
+		// 	method: "POST",
+		// 	body: new FormData(form),
+		// 	headers: {
+		// 		"X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+		// 	},
+		// })
+		// if (!request.ok) {
+		// 	const body = await request.json()
+		// 	console.log(body)
+		// 	throw new HandlerError("invalid request", body)
+		// }
+		// window.location.href = request.url
 	})
 })
 
@@ -54,3 +53,10 @@ document.querySelector("#logo").onchange = (evt) => {
 		imagePreview.style.display = "block"
 	}
 }
+
+document.querySelector("#logoLabel").addEventListener("keypress", (event) => {
+	if (event.key === "Enter") {
+		event.preventDefault()
+		event.target.click()
+	}
+})
