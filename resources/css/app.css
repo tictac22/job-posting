@@ -6,6 +6,7 @@
 	max-width: 1430px;
 	padding: 0 15px;
 	margin: 0 auto;
+	width: initial;
 }
 
 @layer components {

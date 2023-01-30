@@ -8,6 +8,26 @@
 />
 @endsection
 @section('content')
-<main>
+<main class="flex-1 my-4">
+	<div class="h-[500px] bg-[#62d0df] flex items-center justify-center text-center">
+		<div class="container">
+			<div>
+				<h1 class="text-white text-4xl tracking-wider ">BlueCollar</h1>
+				<p class="mt-1">Find or post Web developer jobs</p>
+				<a href="/login" class="uppercase p-4 bg-amber-500 hover:bg-amber-600 transition-colors cursor-pointer text-white mt-5 block">sign up to list a job</a>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div class="container">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+				<x-post/>
+				<x-post/>
+				<x-post/>
+				<x-post/>
+				<x-post/>
+			</div>
+		</div>
+	</div>
 </main>
 @endsection
