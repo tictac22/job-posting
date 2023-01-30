@@ -4,13 +4,23 @@ namespace App\Services;
 use Illuminate\Validation\Rules\File;
 
 use App\Models\Posts;
+use App\Traits\ParseTags;
 use App\Traits\RequestHelper;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class PostsService {
 	use RequestHelper;
+	use ParseTags;
 	function __construct(private Posts $postsModule, private FileService $fileService){}
+	public function getAll()
+	{
+		$posts =  $this->postsModule::all();
+		foreach($posts as &$post) {
+			$post['tags'] = $this->parseTags($post->tags);
+		}
+		return $posts;
+	}
 	public function getPost(int $id)
 	{
 		$post =  $this->postsModule::findOrFail($id);

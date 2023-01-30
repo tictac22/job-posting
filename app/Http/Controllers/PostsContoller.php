@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\FileService;
 use App\Services\PostsService;
+use App\Traits\ParseTags;
 use App\Traits\Url;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,7 +14,14 @@ use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Validator;
 class PostsContoller extends Controller {
 	use Url;
+	use ParseTags;
 	function __construct(private PostsService $postsService,private FileService $fileService){}
+
+	public function index(Request $request)
+	{	
+		$posts = $this->postsService->getAll();
+		return view('index',['posts'=> $posts]);
+	}
 	public function getPostForm(Request $request, $id)
 	{
 		$post = $this->postsService->getPost((int)$id);
@@ -25,8 +33,7 @@ class PostsContoller extends Controller {
 	public function getOne(Request $request, $id) 
 	{
 		$post = $this->postsService->getPost((int)$id);
-		$tags = explode(',',$post->tags);
-		$post['tags'] = $tags;
+		$post['tags'] = $this->parseTags($post->tags);
 		$creator = false;
 		if (Gate::allows('update-post', $post)) {
 			$creator = true;

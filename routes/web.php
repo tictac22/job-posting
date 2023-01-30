@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::view('/', 'index')->name('index');
+Route::get('/', [PostsContoller::class,'index'])->name('index');
 Route::view("/register", 'auth.register')->name('register');
 Route::view("/login", 'auth.login')->name('login');
 

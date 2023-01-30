@@ -26,11 +26,30 @@
 	<div>
 		<div class="container">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-				<x-post/>
-				<x-post/>
-				<x-post/>
-				<x-post/>
-				<x-post/>
+				@foreach ($posts as $post)
+					<div class="flex items-center bg-white mt-5 p-4">
+						<div class="w-48 hidden md:block">
+							<img class="w-full" src="{{$post->logo}}" alt="{{$post->company_name}}"/>
+						</div>
+						<div class="md:ml-5 md:flex-grow md:flex-shrink md:flex-[66%] flex flex-col">
+							<a href="job/{{$post->id}}" class="font-bold hover:underline">{{$post->job_title}}</a>
+							<h3 class="font-bold mt-1">{{$post->company_name}}</h3>
+							<ul class="mt-1">
+								@foreach ($post->tags as $tag)
+									<li class="text-white bg-black p-2 inline-block lowercase rounded-lg">
+										<a href="?tag=react">{{$tag}}</a>
+									</li>
+								@endforeach
+								
+								<p class="text-gray-400 text-xs mt-1">Click on tag search to search on it</p>
+							</ul>
+							<div class="flex items-center mt-1">
+								<i class="fa-sharp fa-solid fa-location-pin"></i>
+								<p class="ml-1">{{$post->location}}</p>
+							</div>
+						</div>
+					</div>
+				@endforeach
 			</div>
 		</div>
 	</div>
