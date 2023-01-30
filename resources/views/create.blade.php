@@ -1,5 +1,15 @@
 @extends('layouts.app')
 @section("title","Create")
+
+@section('metatags')
+<x-head 
+	description="Create post form"
+	title="Create"
+	image="{{url('/'). '/assets/seo-images/index.png'}}"
+	imageAlt="Find or post job here"
+/>
+@endsection
+
 @section('content')
 <main class="flex-grow flex flex-col justify-center">
 	<div>

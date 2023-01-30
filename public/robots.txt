@@ -1,2 +1,4 @@
 User-agent: *
-Disallow:
+Disallow: /create
+Disallow: /manage
+Disallow: /edit/

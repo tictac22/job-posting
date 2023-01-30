@@ -1,5 +1,15 @@
 @extends('layouts.app')
 @section("title","Registration")
+
+@section('metatags')
+<x-head 
+	description="Login to job-post"
+	title="Login"
+	image="{{url('/'). '/assets/seo-images/index.png'}}"
+	imageAlt='Find or post job here'
+/>
+@endsection
+
 @section('content')
 <main class="flex-grow flex flex-col justify-center">
 	<div>
