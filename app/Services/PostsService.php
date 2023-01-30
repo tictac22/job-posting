@@ -41,8 +41,7 @@ class PostsService {
 		$convertedBody = $this->getRequiredFields($body,$this->postsModule->getFillable());
 		$convertedBody['user_id'] = Auth::id();
 		
-		$post->update($convertedBody);
-		return $this->postsModule::create($convertedBody);
+		return $post->update($convertedBody);
 
 	}
 	
