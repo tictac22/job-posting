@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\FileService;
 use App\Services\PostsService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -9,11 +10,19 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Validator;
-
 class PostsContoller extends Controller {
 
-	function __construct(private PostsService $postsService){}
-	public function getOne(Request $request, $id) {
+	function __construct(private PostsService $postsService,private FileService $fileService){}
+	public function getPostForm(Request $request, $id)
+	{
+		$post = $this->postsService->getPost((int)$id);
+		if (!Gate::allows('update-post', $post)) {
+			return redirect("/job/" . $id);
+		}
+		return view('edit',['post' => $post]);
+	}
+	public function getOne(Request $request, $id) 
+	{
 		$post = $this->postsService->getPost((int)$id);
 
 		$creator = false;
@@ -23,11 +32,13 @@ class PostsContoller extends Controller {
 		$post['updated_at_parse'] = Carbon::parse($post->updated_at)->format('d/m/Y');
 		return view('job',['post' => $post,'creator' => $creator]);
 	}
+
 	public function getUsersPost(Request $request)
 	{	
 		$posts = $this->postsService->getUsersPosts((int)Auth::id());
 		return view('manage',['posts' => $posts]);
 	}
+
 	public function create(Request $request)
 	{
 		$body = $request->all();

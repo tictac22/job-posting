@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section("title","Create")
+@section("title","BlueCollar")
 
 @section('metatags')
 <x-head 
-	description="Create post form"
-	title="Create"
+	description="Edit post form"
+	title="BlueCollar"
 	image="{{url('/'). '/assets/seo-images/index.png'}}"
 	imageAlt="Find or post job here"
 />
@@ -47,9 +47,6 @@
 									<label for="logo" class="absolute left-0 -top-3.5 input-label">Company logo</label>
 									<p class="mt-1 text-xs text-red-500 hidden"></p>
 								</div>
-								<div class="reltaive mt-5 flex items-center justify-center">
-									<img id="imagePreview" class="w-60 h-60 object-cover hidden"  src="" alt="preview of image" />
-								</div>
 								<div class="relative mt-5">
 									<textarea id="description" name="description" maxlength="255"  class="resize-none min-h-[175px] w-full mt-4 peer placeholder-transparent field" placeholder="Job description"></textarea>
 									<label for="description" class="absolute left-0 -top-3.5 input-label">Job description</label>
@@ -73,5 +70,5 @@
 @endsection
 
 @section('scripts')
-	@vite('resources/js/create.js')
+	@vite('resources/js/edit.js')
 @endsection

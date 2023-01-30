@@ -14,4 +14,11 @@ class FileService {
 		])->getSecurePath();
 		return $uploadedFileUrl;
 	}
+	function delete(string $url)
+	{	
+		$dividedPath = explode('/', $url);
+		$pathWithoutExt = explode('.', $dividedPath[count($dividedPath)-1]);
+
+		return cloudinary()->destroy($pathWithoutExt[0]);
+	}
 }

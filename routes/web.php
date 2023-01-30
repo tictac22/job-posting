@@ -29,6 +29,8 @@ Route::controller(PostsContoller::class)->group(function () {
 
 	Route::get('/manage','getUsersPost')->middleware('auth')->name('manage');
 	Route::get('/job/{id}','getOne')->where('id', '[0-9]+')->name('job');
+	
+	Route::get('/edit/{id}','getPostForm')->where('id', '[0-9]+')->name('job');
 	Route::post('/create','create')->middleware('auth');
 });
 

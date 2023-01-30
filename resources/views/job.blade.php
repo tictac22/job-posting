@@ -22,7 +22,7 @@
 	@endif
 	<div class="flex items-center bg-white py-4 text-center">
 		<div class="container">
-			<div class="w-48 hidden md:block m-auto">
+			<div class="w-48 m-auto">
 				<img class="w-full" src="{{$post->logo}}" alt="{{$post->company_name}}"/>
 			</div>
 			<div class="md:flex-grow md:flex-shrink md:flex-[66%] flex flex-col">
