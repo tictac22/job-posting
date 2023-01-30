@@ -37,7 +37,7 @@
 							<ul class="mt-1">
 								@foreach ($post->tags as $tag)
 									<li class="text-white bg-black p-2 inline-block lowercase rounded-lg">
-										<a href="?tag=react">{{$tag}}</a>
+										<a href="?tag={{$tag}}">{{$tag}}</a>
 									</li>
 								@endforeach
 								

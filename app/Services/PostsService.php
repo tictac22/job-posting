@@ -15,11 +15,18 @@ class PostsService {
 	function __construct(private Posts $postsModule, private FileService $fileService){}
 	public function getAll()
 	{
-		$posts =  $this->postsModule::all();
-		foreach($posts as &$post) {
-			$post['tags'] = $this->parseTags($post->tags);
+		$posts = $this->postsModule::query();
+		$filters = request(['tag','search']);
+		if(array_key_exists('tag',$filters)) {
+			$posts->where('tags','LIKE','%'. strtolower($filters['tag']).'%');
 		}
-		return $posts;
+		$filteredPosts = $posts->get();
+		foreach($filteredPosts as &$post) {
+
+			$post['tags'] = $this->parseTags(strtolower($post->tags));
+			
+		}
+		return $filteredPosts;
 	}
 	public function getPost(int $id)
 	{
@@ -37,7 +44,6 @@ class PostsService {
 		$convertedBody = $this->getRequiredFields($body,$this->postsModule->getFillable());
 		$convertedBody['logo'] = $imageurl;
 		$convertedBody['user_id'] = Auth::id();
-		
 		return $this->postsModule::create($convertedBody);
 
 	}
