@@ -12,7 +12,10 @@ class PostsService {
 	function __construct(private Posts $postsModule, private FileService $fileService){}
 	public function getPost(int $id)
 	{
-		return $this->postsModule::findOrFail($id);
+		$post =  $this->postsModule::findOrFail($id);
+		$tags = explode(',',$post->tags);
+		$post['tags'] = $tags;
+		return $post;
 	}
 	public function createPost(array $body)
 	{	
