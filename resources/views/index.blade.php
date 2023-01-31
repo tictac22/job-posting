@@ -53,12 +53,12 @@
 							<img class="w-full" src="{{$post->logo}}" alt="{{$post->company_name}}"/>
 						</div>
 						<div class="md:ml-5 md:flex-grow md:flex-shrink md:flex-[66%] flex flex-col">
-							<a href="job/{{$post->id}}" class="font-bold hover:underline">{{$post->job_title}}</a>
+							<a href="{{$post->id}}" class="font-bold hover:underline">{{$post->job_title}}</a>
 							<h3 class="font-bold mt-1">{{$post->company_name}}</h3>
 							<ul class="mt-1">
 								@foreach ($post->tags as $tag)
-									<li class="text-white bg-black p-2 inline-block lowercase rounded-lg">
-										<a class="tags" href="?tag={{$tag}}">{{$tag}}</a>
+									<li data-value='{{$tag}}' tabindex="0" aria-label="filter by tag {{$tag}}" class="text-white bg-black p-2 inline-block lowercase rounded-lg tag__item cursor-pointer hover:bg-[#2c2626]">
+										<span class="tags">{{$tag}}</span>
 									</li>
 								@endforeach
 								
