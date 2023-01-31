@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\ParallelTesting;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
 
-class UserTest extends TestCase
+class AuthControllerTest extends TestCase
 {
 	use RefreshDatabase;
     /**

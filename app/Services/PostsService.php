@@ -73,6 +73,6 @@ class PostsService {
 		}
 
 		$this->fileService->delete($post->logo);
-		$post->delete();
+		return $post->delete();
 	}
 }

@@ -117,6 +117,6 @@ class PostsContoller extends Controller {
 		if($validator->fails()) {
 			return response($validator->errors(),'400');
 		}
-		$this->postsService->deletePost((int)$body['id']);
+		return $this->postsService->deletePost((int)$body['id']);
 	}
 }
