@@ -2,16 +2,18 @@
 name: Laravel
 on: push
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Get repository code
-      uses: actions/checkout@v3
-      with:
-      ref: laravel
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: "8.2"
-        tools: composer
-    - name: Print to console
-      run: echo Hello World!!
+  test:
+    name: testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+        with:
+        ref: laravel
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          tools: composer
+      - name: Print to console
+        run: echo Hello World!
