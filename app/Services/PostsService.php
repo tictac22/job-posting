@@ -53,7 +53,8 @@ class PostsService {
 	{	
 		$post = $this->postsModule::find($body['postId']);
 		if($body['isImage']) {
-			$body['logo'] = $this->fileService->delete($post->logo,$body['logo']);
+			$this->fileService->delete($post->logo);
+			$body['logo'] = $this->fileService->upload($body['logo']);
 		}
 
 		$convertedBody = $this->getRequiredFields($body,$this->postsModule->getFillable());
