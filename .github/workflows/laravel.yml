@@ -27,5 +27,7 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Build Node.js dependencies
         run: yarn build
+      - name: print env file 
+        run: cat .env.testing
       - name: Migrate DB
         run: php artisan migrate --force
