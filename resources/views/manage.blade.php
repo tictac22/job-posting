@@ -32,7 +32,10 @@
 				</div>
 				
 			@empty
-				<p>empty</p>
+				<p class="font-bold text-lg">You have zero posts</p>
+				<span>
+					Go to <a href="/create" class="text-purple-500 hover:underline">create page</a> to post new one
+				</span>
 			@endforelse
 		</div>
 	</div>
