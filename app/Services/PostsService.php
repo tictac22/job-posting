@@ -7,6 +7,7 @@ use App\Models\Posts;
 use App\Traits\ParseTags;
 use App\Traits\RequestHelper;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 
 class PostsService {
@@ -63,5 +64,15 @@ class PostsService {
 		return $post->update($convertedBody);
 
 	}
-	
+	public function deletePost(int $id)
+	{
+		$post = $this->postsModule::find($id);
+		
+		if (!Gate::allows('update-post', $post)) {
+			return abort(403);
+		}
+
+		$this->fileService->delete($post->logo);
+		$post->delete();
+	}
 }

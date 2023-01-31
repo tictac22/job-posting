@@ -20,18 +20,23 @@ document.querySelectorAll(".popup__confirm").forEach((item) => {
 		item.disabled = true
 		item.querySelector(".button-text").style.display = "none"
 		item.querySelector(".loader").style.display = "block"
-		// const request = await fetch("/delete", {
-		// 	method: "DELETE",
-		// 	body: JSON.stringify({ id }),
-		// 	headers: {
-		// 		"X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
-		// 	},
-		// })
-		// if (!request.ok) {
-		// 	const body = await request.json()
-		// 	console.log(body)
-		// 	throw new HandlerError("invalid request", body)
-		// }
+		const formData = new FormData()
+		formData.append("id", id)
+		const request = await fetch("/delete", {
+			method: "POST",
+			body: formData,
+			headers: {
+				"X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+			},
+		})
+		if (!request.ok) {
+			const body = await request.json()
+			console.log(body)
+			item.disabled = false
+			item.querySelector(".button-text").style.display = "block"
+			item.querySelector(".loader").style.display = "none"
+			throw new HandlerError("invalid request", body)
+		}
 		location.reload()
 	})
 })

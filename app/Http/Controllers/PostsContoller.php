@@ -109,4 +109,14 @@ class PostsContoller extends Controller {
 		return redirect('/job/'. $body['postId']);
 
 	}
+	public function delete(Request $request) {
+		$body = $request->all();
+		$validator = Validator::make($body, [
+			'id' => 'required',
+        ]);
+		if($validator->fails()) {
+			return response($validator->errors(),'400');
+		}
+		$this->postsService->deletePost((int)$body['id']);
+	}
 }
