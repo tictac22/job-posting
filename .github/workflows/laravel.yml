@@ -27,15 +27,5 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Build Node.js dependencies
         run: yarn build
-      - name: 'Create env file'
-        run: |
-          touch .env.testing
-          echo DB_CONNECTION=mysql >> .env.testing
-          echo DB_HOST=127.0.0.1 >> .env.testing
-          echo DB_PORT=3306 >> .env.testing
-          echo DB_DATABASE=postjob_test >> .env.testing
-          echo DB_USERNAME=root >> .env.testing
-          echo DB_PASSWORD= >> .env.testing
-          cat .env
       - name: Migrate DB
         run: php artisan migrate --force
