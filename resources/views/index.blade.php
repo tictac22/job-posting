@@ -5,6 +5,7 @@
 	description="Find your dream job here"
 	title="Job-post"
 	image="{{url('/'). '/assets/seo-images/index.png'}}"
+	imageAlt="description"
 />
 @endsection
 @section('content')
