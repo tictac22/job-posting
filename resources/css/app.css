@@ -59,3 +59,9 @@ textarea:focus.input__error {
 }
 input[type="file"].input__error {
 }
+
+.popup__show {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: all;
+}

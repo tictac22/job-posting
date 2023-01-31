@@ -9,6 +9,7 @@ export default defineConfig({
 				"resources/js/app.js",
 				"resources/js/index.js",
 				"resources/js/register.js",
+				"resources/js/manage.js",
 				"resources/js/login.js",
 				"resources/js/create.js",
 				"resources/js/edit.js",
