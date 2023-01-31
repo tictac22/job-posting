@@ -14,4 +14,4 @@ jobs:
         php-version: "8.2"
         tools: composer
     - name: Print to console
-      run: echo Hello World!
+      run: echo Hello World!!
