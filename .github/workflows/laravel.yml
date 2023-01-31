@@ -28,4 +28,4 @@ jobs:
       - name: Build Node.js dependencies
         run: yarn build
       - name: Migrate DB
-        run: php artisan migrate
+        run: php artisan migrate --force
