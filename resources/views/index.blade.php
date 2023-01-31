@@ -57,9 +57,9 @@
 							<h3 class="font-bold mt-1">{{$post->company_name}}</h3>
 							<ul class="mt-1">
 								@foreach ($post->tags as $tag)
-									<li data-value='{{$tag}}' tabindex="0" aria-label="filter by tag {{$tag}}" class="text-white bg-black p-2 inline-block lowercase rounded-lg tag__item cursor-pointer hover:bg-[#2c2626]">
+									<a href="{{request()->fullUrlWithQuery(['tag' => $tag])}}" data-value='{{$tag}}' tabindex="0" aria-label="filter by tag {{$tag}}" class="text-white bg-black p-2 inline-block lowercase rounded-lg tag__item cursor-pointer hover:bg-[#2c2626]">
 										<span class="tags">{{$tag}}</span>
-									</li>
+									</a>
 								@endforeach
 								
 								<p class="text-gray-400 text-xs mt-1">Click on tag search to search on it</p>

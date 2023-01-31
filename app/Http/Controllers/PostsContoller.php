@@ -25,6 +25,7 @@ class PostsContoller extends Controller {
 			$hasParams = true;
 		}
 		$posts = $this->postsService->getAll($filters);
+		// dd($posts);
 		return view('index',['posts'=> $posts,'hasParams' => $hasParams]);
 	}
 	public function getPostForm(Request $request, $id)

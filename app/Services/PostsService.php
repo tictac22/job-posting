@@ -22,7 +22,7 @@ class PostsService {
 		if(array_key_exists('search',$filters)) {
 			$posts->orWhere('job_title','LIKE','%'. strtolower($filters['search']).'%');
 		}
-		$filteredPosts = $posts->get();
+		$filteredPosts = $posts->paginate(6);
 		foreach($filteredPosts as &$post) {
 
 			$post['tags'] = $this->parseTags(strtolower($post->tags));

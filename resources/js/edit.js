@@ -60,13 +60,6 @@ document.querySelector("#logo").onchange = (evt) => {
 	}
 }
 
-document.querySelector("#logoLabel").addEventListener("keypress", (event) => {
-	if (event.key === "Enter") {
-		event.preventDefault()
-		event.target.click()
-	}
-})
-
 function getIdFromUrl() {
 	let url = new URL(window.location.href)
 	return url.pathname.split("/").at(-1)
