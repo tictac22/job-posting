@@ -70,7 +70,10 @@
 							</div>
 						</div>
 					</div>
-				@endforeach
+					@endforeach
+				</div>
+			<div class="mt-6 p-4">
+				{{ $posts->onEachSide(5)->links() }}
 			</div>
 		</div>
 	</div>
